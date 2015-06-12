@@ -1,0 +1,5 @@
+This is the dist-git repo for redis.
+
+The master branch is unused.  Use an existing branch instead.
+
+See rhpkg --help for more information.

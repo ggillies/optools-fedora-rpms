@@ -1,0 +1,42 @@
+From 62135866a7533941c927d06cf47a2813f2f68256 Mon Sep 17 00:00:00 2001
+From: Vladimir Kochnev <hashtable@yandex.ru>
+Date: Mon, 18 May 2015 17:33:24 +0300
+Subject: [PATCH] Fix incorrect list element comparator.
+
+List elements was being comparing incorrectly.
+C operator `==` returns 1 on equal elements but SGLIB wants a zero.
+As a consequence `ruby_xfree` was being calling on memory regions that are in
+use. It caused random segfaults when using Patron.
+
+Also this patch optimizes list element deletion: there is a convenient
+SGLIB macro `SGLIB_LIST_DELETE_IF_MEMBER` so there's no need to go
+through list twice.
+---
+ ext/patron/session_ext.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/ext/patron/session_ext.c b/ext/patron/session_ext.c
+index 147cd91..4966fe6 100644
+--- a/ext/patron/session_ext.c
++++ b/ext/patron/session_ext.c
+@@ -112,7 +112,7 @@ struct curl_state_list {
+   struct curl_state_list  *next;
+ };
+ 
+-#define CS_LIST_COMPARATOR(p, _state_) (p->state == _state_)
++#define CS_LIST_COMPARATOR(p, _state_) (p->state - _state_)
+ 
+ static struct curl_state_list *cs_list = NULL;
+ 
+@@ -131,9 +131,9 @@ static void cs_list_remove(struct curl_state *state) {
+   struct curl_state_list *item = NULL;
+ 
+   assert(state != NULL);
+-  SGLIB_LIST_FIND_MEMBER(struct curl_state_list, cs_list, state, CS_LIST_COMPARATOR, next, item);
++
++  SGLIB_LIST_DELETE_IF_MEMBER(struct curl_state_list, cs_list, state, CS_LIST_COMPARATOR, next, item);
+   if (item) {
+-    SGLIB_LIST_DELETE(struct curl_state_list, cs_list, item, next);
+     ruby_xfree(item);
+   }
+ }

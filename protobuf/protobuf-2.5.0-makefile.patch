@@ -1,0 +1,30 @@
+diff -up protobuf-2.5.0/src/Makefile.am.generic protobuf-2.5.0/src/Makefile.am
+--- protobuf-2.5.0/src/Makefile.am.generic	2013-05-16 10:25:07.000000000 +0200
++++ protobuf-2.5.0/src/Makefile.am	2013-05-16 10:26:15.000000000 +0200
+@@ -42,6 +42,7 @@ nobase_include_HEADERS =
+   google/protobuf/stubs/atomicops_internals_arm_gcc.h           \
+   google/protobuf/stubs/atomicops_internals_arm_qnx.h           \
+   google/protobuf/stubs/atomicops_internals_atomicword_compat.h \
++  google/protobuf/stubs/atomicops_internals_generic_gcc.h       \
+   google/protobuf/stubs/atomicops_internals_macosx.h            \
+   google/protobuf/stubs/atomicops_internals_mips_gcc.h          \
+   google/protobuf/stubs/atomicops_internals_pnacl.h             \
+diff -up protobuf-2.5.0/src/Makefile.in.generic protobuf-2.5.0/src/Makefile.in
+--- protobuf-2.5.0/src/Makefile.in.generic	2013-05-16 10:25:14.000000000 +0200
++++ protobuf-2.5.0/src/Makefile.in	2013-05-16 10:27:00.000000000 +0200
+@@ -309,6 +309,7 @@ am__nobase_include_HEADERS_DIST = google
+ 	google/protobuf/stubs/atomicops_internals_arm_gcc.h \
+ 	google/protobuf/stubs/atomicops_internals_arm_qnx.h \
+ 	google/protobuf/stubs/atomicops_internals_atomicword_compat.h \
++	google/protobuf/stubs/atomicops_internals_generic_gcc.h \
+ 	google/protobuf/stubs/atomicops_internals_macosx.h \
+ 	google/protobuf/stubs/atomicops_internals_mips_gcc.h \
+ 	google/protobuf/stubs/atomicops_internals_pnacl.h \
+@@ -518,6 +519,7 @@ nobase_include_HEADERS = \
+   google/protobuf/stubs/atomicops_internals_arm_gcc.h           \
+   google/protobuf/stubs/atomicops_internals_arm_qnx.h           \
+   google/protobuf/stubs/atomicops_internals_atomicword_compat.h \
++  google/protobuf/stubs/atomicops_internals_generic_gcc.h       \
+   google/protobuf/stubs/atomicops_internals_macosx.h            \
+   google/protobuf/stubs/atomicops_internals_mips_gcc.h          \
+   google/protobuf/stubs/atomicops_internals_pnacl.h             \

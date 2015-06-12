@@ -1,0 +1,30 @@
+From cb89c8249c2ad1ad6beae942c017564ad6d7fb4b Mon Sep 17 00:00:00 2001
+From: Christopher Bowman <cbowman0@gmail.com>
+Date: Wed, 28 Aug 2013 18:45:16 +0000
+Subject: [PATCH] JSON.parse the escaped JSON for initialState.
+
+This resolves the issue of dashboards not loading when passed as /dashboard/<name>.
+
+Tracked upstream as https://github.com/graphite-project/graphite-web/issues/411
+Backported to pristine 0.9.12.
+
+diff --git a/webapp/graphite/templates/dashboard.html b/webapp/graphite/templates/dashboard.html
+index ebd2609..93aeaf9 100644
+--- graphite-web-0.9.12/webapp/graphite/templates/dashboard.html
++++ graphite-web-0.9.12/webapp/graphite/templates/dashboard.html
+@@ -23,13 +23,13 @@
+     var HELP_ICON     = '/content/js/ext/examples/shared/icons/fam/information.png';
+ 
+     {% if initialState %}
+-    var initialState = "{{ initialState|escapejs }}";
++    var initialState = JSON.parse('{{ initialState|escapejs }}');
+     {% else %}
+     var initialState = null;
+     {% endif %}
+ 
+     {% if initialError %}
+-    var initialError = "{{ initialError|escapejs }}";
++    var initialError = '{{ initialError|escapejs }}';
+     {% else %}
+     var initialError = null;
+     {% endif %}

@@ -1,0 +1,176 @@
+From 4bf18d54845697b3a2398f661405a6826a40fb45 Mon Sep 17 00:00:00 2001
+From: Jamie Nguyen <j@jamielinux.com>
+Date: Mon, 29 Sep 2014 12:54:47 +0100
+Subject: [PATCH] Changes needed to run without warning using django 1.5
+
+---
+ webapp/graphite/account/urls.py   | 2 +-
+ webapp/graphite/browser/urls.py   | 2 +-
+ webapp/graphite/cli/urls.py       | 2 +-
+ webapp/graphite/composer/urls.py  | 2 +-
+ webapp/graphite/dashboard/urls.py | 2 +-
+ webapp/graphite/events/urls.py    | 2 +-
+ webapp/graphite/graphlot/urls.py  | 2 +-
+ webapp/graphite/metrics/urls.py   | 2 +-
+ webapp/graphite/render/urls.py    | 2 +-
+ webapp/graphite/urls.py           | 2 +-
+ webapp/graphite/version/urls.py   | 2 +-
+ webapp/graphite/whitelist/urls.py | 2 +-
+ 12 files changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/webapp/graphite/account/urls.py b/webapp/graphite/account/urls.py
+index 18d75e2..33ba628 100644
+--- a/webapp/graphite/account/urls.py
++++ b/webapp/graphite/account/urls.py
+@@ -12,7 +12,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License."""
+ 
+-from django.conf.urls.defaults import *
++from django.conf.urls import *
+ 
+ urlpatterns = patterns('graphite.account.views',
+   ('^login/?$', 'loginView'),
+diff --git a/webapp/graphite/browser/urls.py b/webapp/graphite/browser/urls.py
+index 1e85f19..bc38a7d 100644
+--- a/webapp/graphite/browser/urls.py
++++ b/webapp/graphite/browser/urls.py
+@@ -12,7 +12,7 @@ You may obtain a copy of the License at
+    See the License for the specific language governing permissions and
+    limitations under the License."""
+ 
+-from django.conf.urls.defaults import *
++from django.conf.urls import *
+ 
+ urlpatterns = patterns('graphite.browser.views',
+   ('^header/?$', 'header'),
+diff --git a/webapp/graphite/cli/urls.py b/webapp/graphite/cli/urls.py
+index 8d41d52..24ca6c2 100644
+--- a/webapp/graphite/cli/urls.py
++++ b/webapp/graphite/cli/urls.py
+@@ -12,7 +12,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License."""
+ 
+-from django.conf.urls.defaults import *
++from django.conf.urls import *
+ 
+ urlpatterns = patterns('graphite.cli.views',
+      (r'^autocomplete/?$', 'autocomplete'),
+diff --git a/webapp/graphite/composer/urls.py b/webapp/graphite/composer/urls.py
+index a4e12ae..ced26da 100644
+--- a/webapp/graphite/composer/urls.py
++++ b/webapp/graphite/composer/urls.py
+@@ -12,7 +12,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License."""
+ 
+-from django.conf.urls.defaults import *
++from django.conf.urls import *
+ 
+ urlpatterns = patterns('graphite.composer.views',
+   ('send_email','send_email'),
+diff --git a/webapp/graphite/dashboard/urls.py b/webapp/graphite/dashboard/urls.py
+index 2ab2f69..9d32048 100644
+--- a/webapp/graphite/dashboard/urls.py
++++ b/webapp/graphite/dashboard/urls.py
+@@ -1,4 +1,4 @@
+-from django.conf.urls.defaults import *
++from django.conf.urls import *
+ 
+ urlpatterns = patterns('graphite.dashboard.views',
+   ('^save/(?P<name>[^/]+)', 'save'),
+diff --git a/webapp/graphite/events/urls.py b/webapp/graphite/events/urls.py
+index 3584eba..3dce41e 100644
+--- a/webapp/graphite/events/urls.py
++++ b/webapp/graphite/events/urls.py
+@@ -12,7 +12,7 @@ You may obtain a copy of the License at
+    See the License for the specific language governing permissions and
+    limitations under the License."""
+ 
+-from django.conf.urls.defaults import *
++from django.conf.urls import *
+ 
+ urlpatterns = patterns('graphite.events.views',
+   ('^get_data?$', 'get_data'),
+diff --git a/webapp/graphite/graphlot/urls.py b/webapp/graphite/graphlot/urls.py
+index 7ff1cde..f946a69 100644
+--- a/webapp/graphite/graphlot/urls.py
++++ b/webapp/graphite/graphlot/urls.py
+@@ -12,7 +12,7 @@ You may obtain a copy of the License at
+    See the License for the specific language governing permissions and
+    limitations under the License."""
+ 
+-from django.conf.urls.defaults import *
++from django.conf.urls import *
+ 
+ urlpatterns = patterns('graphite.graphlot.views',
+   ('^rawdata/?$', 'get_data'),
+diff --git a/webapp/graphite/metrics/urls.py b/webapp/graphite/metrics/urls.py
+index 00d8237..2173506 100644
+--- a/webapp/graphite/metrics/urls.py
++++ b/webapp/graphite/metrics/urls.py
+@@ -12,7 +12,7 @@ You may obtain a copy of the License at
+    See the License for the specific language governing permissions and
+    limitations under the License."""
+ 
+-from django.conf.urls.defaults import *
++from django.conf.urls import *
+ 
+ urlpatterns = patterns('graphite.metrics.views',
+   ('^index\.json$', 'index_json'),
+diff --git a/webapp/graphite/render/urls.py b/webapp/graphite/render/urls.py
+index a94a5d1..724aeda 100644
+--- a/webapp/graphite/render/urls.py
++++ b/webapp/graphite/render/urls.py
+@@ -12,7 +12,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License."""
+ 
+-from django.conf.urls.defaults import *
++from django.conf.urls import *
+ 
+ urlpatterns = patterns('graphite.render.views',
+   ('local/?$','renderLocalView'),
+diff --git a/webapp/graphite/urls.py b/webapp/graphite/urls.py
+index 6ff3598..48bc4eb 100644
+--- a/webapp/graphite/urls.py
++++ b/webapp/graphite/urls.py
+@@ -12,7 +12,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License."""
+ 
+-from django.conf.urls.defaults import *
++from django.conf.urls import *
+ from django.conf import settings
+ from django.contrib import admin
+ 
+diff --git a/webapp/graphite/version/urls.py b/webapp/graphite/version/urls.py
+index 49eea7a..abe884e 100755
+--- a/webapp/graphite/version/urls.py
++++ b/webapp/graphite/version/urls.py
+@@ -12,7 +12,7 @@ You may obtain a copy of the License at
+    See the License for the specific language governing permissions and
+    limitations under the License."""
+ 
+-from django.conf.urls.defaults import *
++from django.conf.urls import *
+ 
+ urlpatterns = patterns('graphite.version.views',
+   ('', 'index'),
+diff --git a/webapp/graphite/whitelist/urls.py b/webapp/graphite/whitelist/urls.py
+index 8251b51..a551d43 100644
+--- a/webapp/graphite/whitelist/urls.py
++++ b/webapp/graphite/whitelist/urls.py
+@@ -12,7 +12,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License."""
+ 
+-from django.conf.urls.defaults import *
++from django.conf.urls import *
+ 
+ urlpatterns = patterns('graphite.whitelist.views',
+   ('add','add'),
+-- 
+1.9.3
+

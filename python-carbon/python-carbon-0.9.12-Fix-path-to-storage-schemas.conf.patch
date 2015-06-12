@@ -1,0 +1,25 @@
+From c0f5af17e7e789166af627175f03739b0cf7cce1 Mon Sep 17 00:00:00 2001
+From: Jamie Nguyen <j@jamielinux.com>
+Date: Sun, 28 Sep 2014 12:51:12 +0100
+Subject: [PATCH] Fix path to storage-schemas.conf
+
+---
+ bin/validate-storage-schemas.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/bin/validate-storage-schemas.py b/bin/validate-storage-schemas.py
+index 51a1108..5797593 100755
+--- a/bin/validate-storage-schemas.py
++++ b/bin/validate-storage-schemas.py
+@@ -22,7 +22,7 @@ if len(sys.argv) == 2:
+   SCHEMAS_FILE = sys.argv[1]
+   print "Loading storage-schemas configuration from: '%s'" % SCHEMAS_FILE
+ else:
+-  SCHEMAS_FILE = realpath(join(dirname(__file__), '..', 'conf', 'storage-schemas.conf'))
++  SCHEMAS_FILE = '/etc/carbon/storage-schemas.conf'
+   print "Loading storage-schemas configuration from default location at: '%s'" % SCHEMAS_FILE
+ 
+ config_parser = ConfigParser()
+-- 
+1.9.3
+

@@ -1,0 +1,1220 @@
+diff --git a/README.de.md b/README.de.md
+index 2f8618b..39a1f5f 100644
+--- a/README.de.md
++++ b/README.de.md
+@@ -2279,10 +2279,10 @@ wird empfohlen:
+ 
+ ```ruby
+ require 'my_sinatra_app'
+-require 'test/unit'
++require 'minitest/autorun'
+ require 'rack/test'
+ 
+-class MyAppTest < Test::Unit::TestCase
++class MyAppTest < Minitest::Test
+   include Rack::Test::Methods
+ 
+   def app
+diff --git a/README.es.md b/README.es.md
+index 4aa8716..aec94da 100644
+--- a/README.es.md
++++ b/README.es.md
+@@ -2215,10 +2215,10 @@ cualquier framework o librería de pruebas basada en Rack. Se recomienda usar
+ 
+ ``` ruby
+ require 'mi_app_sinatra'
+-require 'test/unit'
++require 'minitest/autorun'
+ require 'rack/test'
+ 
+-class MiAppTest < Test::Unit::TestCase
++class MiAppTest < Minitest::Test
+   include Rack::Test::Methods
+ 
+   def app
+diff --git a/README.fr.md b/README.fr.md
+index adc39f4..2349afc 100644
+--- a/README.fr.md
++++ b/README.fr.md
+@@ -2385,10 +2385,10 @@ recommandé :
+ 
+ ``` ruby
+ require 'mon_application_sinatra'
+-require 'test/unit'
++require 'minitest/autorun'
+ require 'rack/test'
+ 
+-class MonTest < Test::Unit::TestCase
++class MonTest < Minitest::Test
+   include Rack::Test::Methods
+ 
+   def app
+diff --git a/README.hu.md b/README.hu.md
+index 7b08933..6ec76ae 100644
+--- a/README.hu.md
++++ b/README.hu.md
+@@ -545,7 +545,7 @@ könyvtárat ajánljuk:
+   require 'my_sinatra_app'
+   require 'rack/test'
+ 
+-  class MyAppTest < Test::Unit::TestCase
++  class MyAppTest < Minitest::Test
+     include Rack::Test::Methods
+ 
+     def app
+diff --git a/README.ja.md b/README.ja.md
+index e983bc8..91a40a7 100644
+--- a/README.ja.md
++++ b/README.ja.md
+@@ -2200,10 +2200,10 @@ SinatraでのテストはRackベースのテストライブラリまたはフレ
+ 
+ ``` ruby
+ require 'my_sinatra_app'
+-require 'test/unit'
++require 'minitest/autorun'
+ require 'rack/test'
+ 
+-class MyAppTest < Test::Unit::TestCase
++class MyAppTest < Minitest::Test
+   include Rack::Test::Methods
+ 
+   def app
+diff --git a/README.ko.md b/README.ko.md
+index 3177b35..842998a 100644
+--- a/README.ko.md
++++ b/README.ko.md
+@@ -2283,10 +2283,10 @@ Sinatra 테스트는 많은 Rack 기반 테스팅 라이브러리, 프레임워
+ 
+ ``` ruby
+ require 'my_sinatra_app'
+-require 'test/unit'
++require 'minitest/autorun'
+ require 'rack/test'
+ 
+-class MyAppTest < Test::Unit::TestCase
++class MyAppTest < Minitest::Test
+   include Rack::Test::Methods
+ 
+   def app
+diff --git a/README.md b/README.md
+index f23dcc0..5818f98 100644
+--- a/README.md
++++ b/README.md
+@@ -2397,10 +2397,10 @@ is recommended:
+ 
+ ``` ruby
+ require 'my_sinatra_app'
+-require 'test/unit'
++require 'minitest/autorun'
+ require 'rack/test'
+ 
+-class MyAppTest < Test::Unit::TestCase
++class MyAppTest < Minitest::Test
+   include Rack::Test::Methods
+ 
+   def app
+diff --git a/README.pt-br.md b/README.pt-br.md
+index 2ec7ffe..0804ca1 100644
+--- a/README.pt-br.md
++++ b/README.pt-br.md
+@@ -809,7 +809,7 @@ framework de teste baseados no Rack.
+ require 'minha_aplicacao_sinatra'
+ require 'rack/test'
+ 
+-class MinhaAplicacaoTeste < Test::Unit::TestCase
++class MinhaAplicacaoTeste < Minitest::Test
+   include Rack::Test::Methods
+ 
+   def app
+diff --git a/README.pt-pt.md b/README.pt-pt.md
+index 8dfddb5..93870a7 100644
+--- a/README.pt-pt.md
++++ b/README.pt-pt.md
+@@ -635,7 +635,7 @@ framework de teste baseados no Rack.
+ require 'minha_aplicacao_sinatra'
+ require 'rack/test'
+ 
+-class MinhaAplicacaoTeste < Test::Unit::TestCase
++class MinhaAplicacaoTeste < Minitest::Test
+   include Rack::Test::Methods
+ 
+   def app
+diff --git a/README.ru.md b/README.ru.md
+index af7a66c..bf603f5 100644
+--- a/README.ru.md
++++ b/README.ru.md
+@@ -2269,10 +2269,10 @@ Rack распространяется с различными стандартн
+ 
+ ```ruby
+ require 'my_sinatra_app'
+-require 'test/unit'
++require 'minitest/autorun'
+ require 'rack/test'
+ 
+-class MyAppTest < Test::Unit::TestCase
++class MyAppTest < Minitest::Test
+   include Rack::Test::Methods
+ 
+   def app
+diff --git a/README.zh.md b/README.zh.md
+index 83b5b60..cbf74d1 100644
+--- a/README.zh.md
++++ b/README.zh.md
+@@ -1693,10 +1693,10 @@ Sinatra的测试可以使用任何基于Rack的测试程序库或者框架来编
+ 
+ ~~~~ ruby
+ require 'my_sinatra_app'
+-require 'test/unit'
++require 'minitest/autorun'
+ require 'rack/test'
+ 
+-class MyAppTest < Test::Unit::TestCase
++class MyAppTest < Minitest::Test
+   include Rack::Test::Methods
+ 
+   def app
+diff --git a/test/asciidoctor_test.rb b/test/asciidoctor_test.rb
+index 02e05ba..6d64b04 100644
+--- a/test/asciidoctor_test.rb
++++ b/test/asciidoctor_test.rb
+@@ -3,7 +3,7 @@ require File.expand_path('../helper', __FILE__)
+ begin
+   require 'asciidoctor'
+ 
+-  class AsciidoctorTest < Test::Unit::TestCase
++  class AsciidoctorTest < Minitest::Test
+     def asciidoc_app(&block)
+       mock_app do
+         set :views, File.dirname(__FILE__) + '/views'
+@@ -33,7 +33,7 @@ begin
+ 
+     it 'raises error if template not found' do
+       mock_app { get('/') { asciidoc :no_such_template } }
+-      assert_raise(Errno::ENOENT) { get('/') }
++      assert_raises(Errno::ENOENT) { get('/') }
+     end
+ 
+     it 'renders with inline layouts' do
+diff --git a/test/base_test.rb b/test/base_test.rb
+index 8222c16..04b70b3 100644
+--- a/test/base_test.rb
++++ b/test/base_test.rb
+@@ -1,6 +1,6 @@
+ require File.expand_path('../helper', __FILE__)
+ 
+-class BaseTest < Test::Unit::TestCase
++class BaseTest < Minitest::Test
+   def test_default
+     assert true
+   end
+diff --git a/test/builder_test.rb b/test/builder_test.rb
+index 65744d1..29c6d29 100644
+--- a/test/builder_test.rb
++++ b/test/builder_test.rb
+@@ -3,7 +3,7 @@ require File.expand_path('../helper', __FILE__)
+ begin
+ require 'builder'
+ 
+-class BuilderTest < Test::Unit::TestCase
++class BuilderTest < Minitest::Test
+   def builder_app(options = {}, &block)
+     mock_app do
+       set :views, File.dirname(__FILE__) + '/views'
+@@ -82,7 +82,7 @@ class BuilderTest < Test::Unit::TestCase
+     mock_app do
+       get('/') { builder :no_such_template }
+     end
+-    assert_raise(Errno::ENOENT) { get('/') }
++    assert_raises(Errno::ENOENT) { get('/') }
+   end
+ end
+ 
+diff --git a/test/coffee_test.rb b/test/coffee_test.rb
+index 98dea32..30d1a64 100644
+--- a/test/coffee_test.rb
++++ b/test/coffee_test.rb
+@@ -10,7 +10,7 @@ rescue Exception
+   raise LoadError, 'unable to execute JavaScript'
+ end
+ 
+-class CoffeeTest < Test::Unit::TestCase
++class CoffeeTest < Minitest::Test
+   def coffee_app(options = {}, &block)
+     mock_app do
+       set :views, File.dirname(__FILE__) + '/views'
+@@ -65,7 +65,7 @@ class CoffeeTest < Test::Unit::TestCase
+     mock_app {
+       get('/') { coffee :no_such_template }
+     }
+-    assert_raise(Errno::ENOENT) { get('/') }
++    assert_raises(Errno::ENOENT) { get('/') }
+   end
+ 
+   it "passes coffee options to the coffee engine" do
+diff --git a/test/compile_test.rb b/test/compile_test.rb
+index ece53c6..baa3a4c 100644
+--- a/test/compile_test.rb
++++ b/test/compile_test.rb
+@@ -1,7 +1,7 @@
+ # I like coding: UTF-8
+ require File.expand_path('../helper', __FILE__)
+ 
+-class CompileTest < Test::Unit::TestCase
++class CompileTest < Minitest::Test
+ 
+   def self.converts pattern, expected_regexp
+     it "generates #{expected_regexp.source} from #{pattern}" do
+diff --git a/test/contest.rb b/test/contest.rb
+index 75447aa..fdb6075 100644
+--- a/test/contest.rb
++++ b/test/contest.rb
+@@ -17,24 +17,24 @@
+ # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ # THE SOFTWARE.
+-require "test/unit"
++require "minitest/autorun"
+ 
+-# Test::Unit loads a default test if the suite is empty, whose purpose is to
++# Minitest loads a default test if the suite is empty, whose purpose is to
+ # fail. Since having empty contexts is a common practice, we decided to
+ # overwrite TestSuite#empty? in order to allow them. Having a failure when no
+ # tests have been defined seems counter-intuitive.
+-class Test::Unit::TestSuite
+-  def empty?
+-    false
+-  end
+-end
++#class Test::Unit::TestSuite
++#  def empty?
++#    false
++#  end
++#end
+ 
+ # Contest adds +teardown+, +test+ and +context+ as class methods, and the
+ # instance methods +setup+ and +teardown+ now iterate on the corresponding
+ # blocks. Note that all setup and teardown blocks must be defined with the
+ # block syntax. Adding setup or teardown instance methods defeats the purpose
+ # of this library.
+-class Test::Unit::TestCase
++class Minitest::Test
+   def self.setup(&block)     setup_blocks    << block  end
+   def self.teardown(&block)  teardown_blocks << block  end
+   def self.setup_blocks()    @setup_blocks    ||= []   end
+diff --git a/test/creole_test.rb b/test/creole_test.rb
+index 1a51e2b..76b305f 100644
+--- a/test/creole_test.rb
++++ b/test/creole_test.rb
+@@ -3,7 +3,7 @@ require File.expand_path('../helper', __FILE__)
+ begin
+ require 'creole'
+ 
+-class CreoleTest < Test::Unit::TestCase
++class CreoleTest < Minitest::Test
+   def creole_app(&block)
+     mock_app do
+       set :views, File.dirname(__FILE__) + '/views'
+@@ -26,7 +26,7 @@ class CreoleTest < Test::Unit::TestCase
+ 
+   it "raises error if template not found" do
+     mock_app { get('/') { creole :no_such_template } }
+-    assert_raise(Errno::ENOENT) { get('/') }
++    assert_raises(Errno::ENOENT) { get('/') }
+   end
+ 
+   it "renders with inline layouts" do
+diff --git a/test/delegator_test.rb b/test/delegator_test.rb
+index cdda7b8..bd4425e 100644
+--- a/test/delegator_test.rb
++++ b/test/delegator_test.rb
+@@ -1,6 +1,6 @@
+ require File.expand_path('../helper', __FILE__)
+ 
+-class DelegatorTest < Test::Unit::TestCase
++class DelegatorTest < Minitest::Test
+   class Mirror
+     attr_reader :last_call
+     def method_missing(*a, &b)
+diff --git a/test/encoding_test.rb b/test/encoding_test.rb
+index a2e9f69..61a9f93 100644
+--- a/test/encoding_test.rb
++++ b/test/encoding_test.rb
+@@ -2,7 +2,7 @@
+ require File.expand_path('../helper', __FILE__)
+ require 'erb'
+ 
+-class BaseTest < Test::Unit::TestCase
++class BaseTest < Minitest::Test
+   setup do
+     @base = Sinatra.new(Sinatra::Base)
+     @base.set :views, File.dirname(__FILE__) + "/views"
+diff --git a/test/erb_test.rb b/test/erb_test.rb
+index abf3bae..325da9c 100644
+--- a/test/erb_test.rb
++++ b/test/erb_test.rb
+@@ -1,6 +1,6 @@
+ require File.expand_path('../helper', __FILE__)
+ 
+-class ERBTest < Test::Unit::TestCase
++class ERBTest < Minitest::Test
+   def engine
+     Tilt::ERBTemplate
+   end
+diff --git a/test/extensions_test.rb b/test/extensions_test.rb
+index a423f8f..b0d7e84 100644
+--- a/test/extensions_test.rb
++++ b/test/extensions_test.rb
+@@ -1,6 +1,6 @@
+ require File.expand_path('../helper', __FILE__)
+ 
+-class ExtensionsTest < Test::Unit::TestCase
++class ExtensionsTest < Minitest::Test
+   module FooExtensions
+     def foo
+     end
+diff --git a/test/filter_test.rb b/test/filter_test.rb
+index 8f35b47..f708015 100644
+--- a/test/filter_test.rb
++++ b/test/filter_test.rb
+@@ -1,6 +1,6 @@
+ require File.expand_path('../helper', __FILE__)
+ 
+-class BeforeFilterTest < Test::Unit::TestCase
++class BeforeFilterTest < Minitest::Test
+   it "executes filters in the order defined" do
+     count = 0
+     mock_app do
+@@ -176,7 +176,7 @@ class BeforeFilterTest < Test::Unit::TestCase
+   end
+ end
+ 
+-class AfterFilterTest < Test::Unit::TestCase
++class AfterFilterTest < Minitest::Test
+   it "executes before and after filters in correct order" do
+     invoked = 0
+     mock_app do
+diff --git a/test/haml_test.rb b/test/haml_test.rb
+index dc62271..c3a32cc 100644
+--- a/test/haml_test.rb
++++ b/test/haml_test.rb
+@@ -3,7 +3,7 @@ require File.expand_path('../helper', __FILE__)
+ begin
+ require 'haml'
+ 
+-class HAMLTest < Test::Unit::TestCase
++class HAMLTest < Minitest::Test
+   def haml_app(&block)
+     mock_app do
+       set :views, File.dirname(__FILE__) + '/views'
+@@ -42,7 +42,7 @@ class HAMLTest < Test::Unit::TestCase
+ 
+   it "raises error if template not found" do
+     mock_app { get('/') { haml :no_such_template } }
+-    assert_raise(Errno::ENOENT) { get('/') }
++    assert_raises(Errno::ENOENT) { get('/') }
+   end
+ 
+   it "passes HAML options to the Haml engine" do
+diff --git a/test/helper.rb b/test/helper.rb
+index 1a96710..54a5cf5 100644
+--- a/test/helper.rb
++++ b/test/helper.rb
+@@ -22,7 +22,12 @@ require 'sinatra/base'
+ 
+ class Sinatra::Base
+   # Allow assertions in request context
+-  include Test::Unit::Assertions
++  def assertions
++    @assertions ||= 0
++  end
++  attr_writer :assertions
++
++  include Minitest::Assertions
+ end
+ 
+ class Rack::Builder
+@@ -33,7 +38,7 @@ end
+ 
+ Sinatra::Base.set :environment, :test
+ 
+-class Test::Unit::TestCase
++class Minitest::Test
+   include Rack::Test::Methods
+ 
+   class << self
+diff --git a/test/helpers_test.rb b/test/helpers_test.rb
+index 0eb45e9..f56fe24 100644
+--- a/test/helpers_test.rb
++++ b/test/helpers_test.rb
+@@ -2,7 +2,7 @@ require File.expand_path('../helper', __FILE__)
+ require 'date'
+ require 'json'
+ 
+-class HelpersTest < Test::Unit::TestCase
++class HelpersTest < Minitest::Test
+   def test_default
+     assert true
+   end
+@@ -647,7 +647,7 @@ class HelpersTest < Test::Unit::TestCase
+         end
+       end
+ 
+-      assert_raise(RuntimeError) { get '/foo.xml' }
++      assert_raises(RuntimeError) { get '/foo.xml' }
+     end
+ 
+     it 'only sets default charset for specific mime types' do
+@@ -975,12 +975,12 @@ class HelpersTest < Test::Unit::TestCase
+ 
+     it 'sets the Expires header' do
+       get '/foo'
+-      assert_not_nil response['Expires']
++      refute_nil response['Expires']
+     end
+ 
+     it 'allows passing Time.now objects' do
+       get '/bar'
+-      assert_not_nil response['Expires']
++      refute_nil response['Expires']
+     end
+ 
+     it 'allows passing Time.at objects' do
+@@ -994,7 +994,7 @@ class HelpersTest < Test::Unit::TestCase
+     end
+ 
+     it 'fails when Time.parse raises an ArgumentError' do
+-      assert_raise(ArgumentError) { get '/boom' }
++      assert_raises(ArgumentError) { get '/boom' }
+     end
+   end
+ 
+@@ -1763,7 +1763,7 @@ class HelpersTest < Test::Unit::TestCase
+           "that's weak, dude."
+         end
+       end
+-      assert_raise(ArgumentError) { get('/') }
++      assert_raises(ArgumentError) { get('/') }
+     end
+   end
+ 
+diff --git a/test/integration_test.rb b/test/integration_test.rb
+index b19d7ea..d1dd8cb 100644
+--- a/test/integration_test.rb
++++ b/test/integration_test.rb
+@@ -5,7 +5,7 @@ require File.expand_path('../integration_helper', __FILE__)
+ # Every test runs with every detected server.
+ #
+ # See test/integration/app.rb for the code of the app we test against.
+-class IntegrationTest < Test::Unit::TestCase
++class IntegrationTest < Minitest::Test
+   extend IntegrationHelper
+   attr_accessor :server
+ 
+@@ -87,7 +87,7 @@ class IntegrationTest < Test::Unit::TestCase
+   end
+ 
+   it 'does not generate warnings' do
+-    assert_raise(OpenURI::HTTPError) { server.get '/' }
++    assert_raises(OpenURI::HTTPError) { server.get '/' }
+     server.get '/app_file'
+     assert_equal [], server.warnings
+   end
+diff --git a/test/less_test.rb b/test/less_test.rb
+index 505ef75..10276fd 100644
+--- a/test/less_test.rb
++++ b/test/less_test.rb
+@@ -3,7 +3,7 @@ require File.expand_path('../helper', __FILE__)
+ begin
+ require 'less'
+ 
+-class LessTest < Test::Unit::TestCase
++class LessTest < Minitest::Test
+   def less_app(options = {}, &block)
+     mock_app do
+       set :views, File.dirname(__FILE__) + '/views'
+@@ -60,7 +60,7 @@ class LessTest < Test::Unit::TestCase
+ 
+   it "raises error if template not found" do
+     mock_app { get('/') { less :no_such_template } }
+-    assert_raise(Errno::ENOENT) { get('/') }
++    assert_raises(Errno::ENOENT) { get('/') }
+   end
+ end
+ 
+diff --git a/test/liquid_test.rb b/test/liquid_test.rb
+index 8a8f48e..c72a3fc 100644
+--- a/test/liquid_test.rb
++++ b/test/liquid_test.rb
+@@ -3,7 +3,7 @@ require File.expand_path('../helper', __FILE__)
+ begin
+ require 'liquid'
+ 
+-class LiquidTest < Test::Unit::TestCase
++class LiquidTest < Minitest::Test
+   def liquid_app(&block)
+     mock_app do
+       set :views, File.dirname(__FILE__) + '/views'
+@@ -42,7 +42,7 @@ class LiquidTest < Test::Unit::TestCase
+ 
+   it "raises error if template not found" do
+     mock_app { get('/') { liquid :no_such_template } }
+-    assert_raise(Errno::ENOENT) { get('/') }
++    assert_raises(Errno::ENOENT) { get('/') }
+   end
+ 
+   it "allows passing locals" do
+diff --git a/test/mapped_error_test.rb b/test/mapped_error_test.rb
+index 001ccf3..cb158a2 100644
+--- a/test/mapped_error_test.rb
++++ b/test/mapped_error_test.rb
+@@ -21,7 +21,7 @@ end
+ class FirstError < RuntimeError; end
+ class SecondError < RuntimeError; end
+ 
+-class MappedErrorTest < Test::Unit::TestCase
++class MappedErrorTest < Minitest::Test
+   def test_default
+     assert true
+   end
+@@ -104,7 +104,7 @@ class MappedErrorTest < Test::Unit::TestCase
+         set :raise_errors, true
+         get('/') { raise FooError }
+       end
+-      assert_raise(FooError) { get '/' }
++      assert_raises(FooError) { get '/' }
+     end
+ 
+     it "calls error handlers before raising errors even when raise_errors is set" do
+@@ -113,7 +113,7 @@ class MappedErrorTest < Test::Unit::TestCase
+         error(FooError) { "she's there." }
+         get('/') { raise FooError }
+       end
+-      assert_nothing_raised { get '/' }
++      get '/'
+       assert_equal 500, status
+     end
+ 
+@@ -121,7 +121,7 @@ class MappedErrorTest < Test::Unit::TestCase
+       mock_app(Sinatra::Application) do
+         get('/') { raise Sinatra::NotFound }
+       end
+-      assert_nothing_raised { get '/' }
++      get '/'
+       assert_equal 404, status
+     end
+ 
+@@ -131,7 +131,7 @@ class MappedErrorTest < Test::Unit::TestCase
+         error(FooNotFound) { "foo! not found." }
+         get('/') { raise FooNotFound }
+       end
+-      assert_nothing_raised { get '/' }
++      get '/'
+       assert_equal 404, status
+       assert_equal 'foo! not found.', body
+     end
+diff --git a/test/markaby_test.rb b/test/markaby_test.rb
+index 946f684..fcc7d33 100644
+--- a/test/markaby_test.rb
++++ b/test/markaby_test.rb
+@@ -3,7 +3,7 @@ require File.expand_path('../helper', __FILE__)
+ begin
+ require 'markaby'
+ 
+-class MarkabyTest < Test::Unit::TestCase
++class MarkabyTest < Minitest::Test
+   def markaby_app(&block)
+     mock_app do
+       set :views, File.dirname(__FILE__) + '/views'
+@@ -63,7 +63,7 @@ class MarkabyTest < Test::Unit::TestCase
+ 
+   it "raises error if template not found" do
+     mock_app { get('/') { markaby :no_such_template } }
+-    assert_raise(Errno::ENOENT) { get('/') }
++    assert_raises(Errno::ENOENT) { get('/') }
+   end
+ 
+   it "allows passing locals" do
+diff --git a/test/markdown_test.rb b/test/markdown_test.rb
+index d74bc70..0eb0df1 100644
+--- a/test/markdown_test.rb
++++ b/test/markdown_test.rb
+@@ -34,7 +34,7 @@ MarkdownTest = proc do
+ 
+   it "raises error if template not found" do
+     mock_app { get('/') { markdown :no_such_template } }
+-    assert_raise(Errno::ENOENT) { get('/') }
++    assert_raises(Errno::ENOENT) { get('/') }
+   end
+ 
+   it "renders with inline layouts" do
+@@ -72,7 +72,7 @@ end
+ Tilt.mappings['md'].each do |t|
+   begin
+     t.new { "" }
+-    klass = Class.new(Test::Unit::TestCase) { define_method(:engine) { t }}
++    klass = Class.new(Minitest::Test) { define_method(:engine) { t }}
+     klass.class_eval(&MarkdownTest)
+     name = t.name[/[^:]+$/].sub(/Template$/, '') << "Test"
+     Object.const_set name, klass
+diff --git a/test/mediawiki_test.rb b/test/mediawiki_test.rb
+index 051f389..759aa23 100644
+--- a/test/mediawiki_test.rb
++++ b/test/mediawiki_test.rb
+@@ -3,7 +3,7 @@ require File.expand_path('../helper', __FILE__)
+ begin
+   require 'wikicloth'
+ 
+-  class MediaWikiTest < Test::Unit::TestCase
++  class MediaWikiTest < Minitest::Test
+     def mediawiki_app(&block)
+       mock_app do
+         set :views, File.dirname(__FILE__) + '/views'
+@@ -30,7 +30,7 @@ begin
+ 
+     it 'raises error if template not found' do
+       mock_app { get('/') { mediawiki :no_such_template } }
+-      assert_raise(Errno::ENOENT) { get('/') }
++      assert_raises(Errno::ENOENT) { get('/') }
+     end
+ 
+     it 'renders with inline layouts' do
+diff --git a/test/middleware_test.rb b/test/middleware_test.rb
+index ef06625..8a6e836 100644
+--- a/test/middleware_test.rb
++++ b/test/middleware_test.rb
+@@ -1,6 +1,6 @@
+ require File.expand_path('../helper', __FILE__)
+ 
+-class MiddlewareTest < Test::Unit::TestCase
++class MiddlewareTest < Minitest::Test
+   setup do
+     @app = mock_app(Sinatra::Application) do
+       get('/*')do
+diff --git a/test/nokogiri_test.rb b/test/nokogiri_test.rb
+index 033c45c..e2a1c13 100644
+--- a/test/nokogiri_test.rb
++++ b/test/nokogiri_test.rb
+@@ -3,7 +3,7 @@ require File.expand_path('../helper', __FILE__)
+ begin
+ require 'nokogiri'
+ 
+-class NokogiriTest < Test::Unit::TestCase
++class NokogiriTest < Minitest::Test
+   def nokogiri_app(&block)
+     mock_app do
+       set :views, File.dirname(__FILE__) + '/views'
+@@ -58,7 +58,7 @@ class NokogiriTest < Test::Unit::TestCase
+ 
+   it "raises error if template not found" do
+     mock_app { get('/') { nokogiri :no_such_template } }
+-    assert_raise(Errno::ENOENT) { get('/') }
++    assert_raises(Errno::ENOENT) { get('/') }
+   end
+ end
+ 
+diff --git a/test/rabl_test.rb b/test/rabl_test.rb
+index 98d087d..c9303a1 100644
+--- a/test/rabl_test.rb
++++ b/test/rabl_test.rb
+@@ -6,7 +6,7 @@ require 'ostruct'
+ require 'json'
+ require 'active_support/core_ext/hash/conversions'
+ 
+-class RablTest < Test::Unit::TestCase
++class RablTest < Minitest::Test
+   def rabl_app(&block)
+     mock_app {
+       set :views, File.dirname(__FILE__) + '/views'
+@@ -48,7 +48,7 @@ class RablTest < Test::Unit::TestCase
+     mock_app {
+       get('/') { rabl :no_such_template }
+     }
+-    assert_raise(Errno::ENOENT) { get('/') }
++    assert_raises(Errno::ENOENT) { get('/') }
+   end
+ 
+   it "passes rabl options to the rabl engine" do
+diff --git a/test/rack_test.rb b/test/rack_test.rb
+index 84734ea..8ac81d4 100644
+--- a/test/rack_test.rb
++++ b/test/rack_test.rb
+@@ -1,7 +1,7 @@
+ require File.expand_path('../helper', __FILE__)
+ require 'rack'
+ 
+-class RackTest < Test::Unit::TestCase
++class RackTest < Minitest::Test
+   setup do
+     @foo = Sinatra.new { get('/foo') { 'foo' }}
+     @bar = Sinatra.new { get('/bar') { 'bar' }}
+diff --git a/test/radius_test.rb b/test/radius_test.rb
+index 90f8712..214cd4e 100644
+--- a/test/radius_test.rb
++++ b/test/radius_test.rb
+@@ -3,7 +3,7 @@ require File.expand_path('../helper', __FILE__)
+ begin
+ require 'radius'
+ 
+-class RadiusTest < Test::Unit::TestCase
++class RadiusTest < Minitest::Test
+   def radius_app(&block)
+     mock_app do
+       set :views, File.dirname(__FILE__) + '/views'
+@@ -42,7 +42,7 @@ class RadiusTest < Test::Unit::TestCase
+ 
+   it "raises error if template not found" do
+     mock_app { get('/') { radius :no_such_template } }
+-    assert_raise(Errno::ENOENT) { get('/') }
++    assert_raises(Errno::ENOENT) { get('/') }
+   end
+ 
+   it "allows passing locals" do
+diff --git a/test/rdoc_test.rb b/test/rdoc_test.rb
+index a93299d..1b3a69d 100644
+--- a/test/rdoc_test.rb
++++ b/test/rdoc_test.rb
+@@ -4,7 +4,7 @@ begin
+ require 'rdoc'
+ require 'rdoc/markup/to_html'
+ 
+-class RdocTest < Test::Unit::TestCase
++class RdocTest < Minitest::Test
+   def rdoc_app(&block)
+     mock_app do
+       set :views, File.dirname(__FILE__) + '/views'
+@@ -27,7 +27,7 @@ class RdocTest < Test::Unit::TestCase
+ 
+   it "raises error if template not found" do
+     mock_app { get('/') { rdoc :no_such_template } }
+-    assert_raise(Errno::ENOENT) { get('/') }
++    assert_raises(Errno::ENOENT) { get('/') }
+   end
+ 
+   it "renders with inline layouts" do
+diff --git a/test/readme_test.rb b/test/readme_test.rb
+index 3964deb..4da4103 100644
+--- a/test/readme_test.rb
++++ b/test/readme_test.rb
+@@ -1,7 +1,7 @@
+ # Tests to check if all the README examples work.
+ require File.expand_path('../helper', __FILE__)
+ 
+-class ReadmeTest < Test::Unit::TestCase
++class ReadmeTest < Minitest::Test
+   example do
+     mock_app { get('/') { 'Hello world!' } }
+     get '/'
+diff --git a/test/request_test.rb b/test/request_test.rb
+index f0d923b..1ca4873 100644
+--- a/test/request_test.rb
++++ b/test/request_test.rb
+@@ -1,7 +1,7 @@
+ require File.expand_path('../helper', __FILE__)
+ require 'stringio'
+ 
+-class RequestTest < Test::Unit::TestCase
++class RequestTest < Minitest::Test
+   it 'responds to #user_agent' do
+     request = Sinatra::Request.new({'HTTP_USER_AGENT' => 'Test'})
+     assert request.respond_to?(:user_agent)
+diff --git a/test/response_test.rb b/test/response_test.rb
+index f9feb02..ae4608d 100644
+--- a/test/response_test.rb
++++ b/test/response_test.rb
+@@ -2,7 +2,7 @@
+ 
+ require File.expand_path('../helper', __FILE__)
+ 
+-class ResponseTest < Test::Unit::TestCase
++class ResponseTest < Minitest::Test
+   setup { @response = Sinatra::Response.new }
+ 
+   def assert_same_body(a, b)
+diff --git a/test/result_test.rb b/test/result_test.rb
+index 6c59f6b..dd1eb81 100644
+--- a/test/result_test.rb
++++ b/test/result_test.rb
+@@ -1,6 +1,6 @@
+ require File.expand_path('../helper', __FILE__)
+ 
+-class ResultTest < Test::Unit::TestCase
++class ResultTest < Minitest::Test
+   it "sets response.body when result is a String" do
+     mock_app { get('/') { 'Hello World' } }
+ 
+@@ -63,7 +63,7 @@ class ResultTest < Test::Unit::TestCase
+       get('/') { [409, 'formula of', 'something else', 'even more'] }
+     }
+ 
+-    assert_raise(ArgumentError) { get '/' }
++    assert_raises(ArgumentError) { get '/' }
+   end
+ 
+   it "sets status when result is a Fixnum status code" do
+diff --git a/test/route_added_hook_test.rb b/test/route_added_hook_test.rb
+index d6ef341..2356166 100644
+--- a/test/route_added_hook_test.rb
++++ b/test/route_added_hook_test.rb
+@@ -10,7 +10,7 @@ module RouteAddedTest
+   end
+ end
+ 
+-class RouteAddedHookTest < Test::Unit::TestCase
++class RouteAddedHookTest < Minitest::Test
+   setup do
+     RouteAddedTest.routes.clear
+     RouteAddedTest.procs.clear
+diff --git a/test/routing_test.rb b/test/routing_test.rb
+index 5584601..23d4f40 100644
+--- a/test/routing_test.rb
++++ b/test/routing_test.rb
+@@ -22,7 +22,7 @@ class RegexpLookAlike
+   end
+ end
+ 
+-class RoutingTest < Test::Unit::TestCase
++class RoutingTest < Minitest::Test
+   %w[get put post delete options patch link unlink].each do |verb|
+     it "defines #{verb.upcase} request handlers with #{verb}" do
+       mock_app {
+@@ -557,7 +557,7 @@ class RoutingTest < Test::Unit::TestCase
+   end
+ 
+   it 'raises a TypeError when pattern is not a String or Regexp' do
+-    assert_raise(TypeError) {
++    assert_raises(TypeError) {
+       mock_app { get(42){} }
+     }
+   end
+@@ -1184,7 +1184,7 @@ class RoutingTest < Test::Unit::TestCase
+       end
+     end
+ 
+-    assert_raise(ArgumentError) { get '/a/b/c' }
++    assert_raises(ArgumentError) { get '/a/b/c' }
+   end
+ 
+   it 'raises an ArgumentError with block param arity > 1 and too few values' do
+@@ -1194,7 +1194,7 @@ class RoutingTest < Test::Unit::TestCase
+       end
+     }
+ 
+-    assert_raise(ArgumentError) { get '/a/b' }
++    assert_raises(ArgumentError) { get '/a/b' }
+   end
+ 
+   it 'succeeds if no block parameters are specified' do
+@@ -1269,7 +1269,7 @@ class RoutingTest < Test::Unit::TestCase
+         end
+       }
+ 
+-      assert_raise(ArgumentError) { get '/foo' }
++      assert_raises(ArgumentError) { get '/foo' }
+     end
+ 
+     it 'raises an ArgumentError with block param arity 1 and too many values' do
+@@ -1279,7 +1279,7 @@ class RoutingTest < Test::Unit::TestCase
+         end
+       }
+ 
+-      assert_raise(ArgumentError) { get '/a/b/c' }
++      assert_raises(ArgumentError) { get '/a/b/c' }
+     end
+ 
+   else
+diff --git a/test/sass_test.rb b/test/sass_test.rb
+index fec4e2f..a8cbf6f 100644
+--- a/test/sass_test.rb
++++ b/test/sass_test.rb
+@@ -3,7 +3,7 @@ require File.expand_path('../helper', __FILE__)
+ begin
+ require 'sass'
+ 
+-class SassTest < Test::Unit::TestCase
++class SassTest < Minitest::Test
+   def sass_app(options = {}, &block)
+     mock_app do
+       set :views, File.dirname(__FILE__) + '/views'
+@@ -56,7 +56,7 @@ class SassTest < Test::Unit::TestCase
+ 
+   it "raises error if template not found" do
+     mock_app { get('/') { sass :no_such_template } }
+-    assert_raise(Errno::ENOENT) { get('/') }
++    assert_raises(Errno::ENOENT) { get('/') }
+   end
+ 
+   it "passes SASS options to the Sass engine" do
+@@ -102,7 +102,7 @@ class SassTest < Test::Unit::TestCase
+     get '/'
+     assert ok?
+     assert_equal "#sass { background-color: white; color: black; }\n", body
+-    assert_raise(Sass::SyntaxError) { get('/raised') }
++    assert_raises(Sass::SyntaxError) { get('/raised') }
+     get '/expanded_normal'
+     assert ok?
+     assert_equal "#sass {\n  background-color: white;\n  color: black;\n}\n",
+diff --git a/test/scss_test.rb b/test/scss_test.rb
+index 3d43e88..1db2eff 100644
+--- a/test/scss_test.rb
++++ b/test/scss_test.rb
+@@ -3,7 +3,7 @@ require File.expand_path('../helper', __FILE__)
+ begin
+ require 'sass'
+ 
+-class ScssTest < Test::Unit::TestCase
++class ScssTest < Minitest::Test
+   def scss_app(options = {}, &block)
+     mock_app do
+       set :views, File.dirname(__FILE__) + '/views'
+@@ -56,7 +56,7 @@ class ScssTest < Test::Unit::TestCase
+ 
+   it "raises error if template not found" do
+     mock_app { get('/') { scss(:no_such_template) } }
+-    assert_raise(Errno::ENOENT) { get('/') }
++    assert_raises(Errno::ENOENT) { get('/') }
+   end
+ 
+   it "passes scss options to the scss engine" do
+diff --git a/test/server_test.rb b/test/server_test.rb
+index 7a0633c..58f19ab 100644
+--- a/test/server_test.rb
++++ b/test/server_test.rb
+@@ -3,7 +3,15 @@ require 'stringio'
+ 
+ module Rack::Handler
+   class Mock
+-    extend Test::Unit::Assertions
++    def self.assertions
++      @assertions ||= 0
++    end
++
++    def self.assertions=(value)
++      @assertions = value
++    end
++
++    extend Minitest::Assertions
+ 
+     def self.run(app, options={})
+       assert(app < Sinatra::Base)
+@@ -19,7 +27,7 @@ module Rack::Handler
+   register 'mock', 'Rack::Handler::Mock'
+ end
+ 
+-class ServerTest < Test::Unit::TestCase
++class ServerTest < Minitest::Test
+   setup do
+     mock_app do
+       set :server, 'mock'
+diff --git a/test/settings_test.rb b/test/settings_test.rb
+index 127c97c..7ec03c6 100644
+--- a/test/settings_test.rb
++++ b/test/settings_test.rb
+@@ -1,6 +1,6 @@
+ require File.expand_path('../helper', __FILE__)
+ 
+-class SettingsTest < Test::Unit::TestCase
++class SettingsTest < Minitest::Test
+   setup do
+     @base = Sinatra.new(Sinatra::Base)
+     @base.set :environment => :foo, :app_file => nil
+@@ -28,14 +28,14 @@ class SettingsTest < Test::Unit::TestCase
+   end
+ 
+   it 'raises an error with a value and a block' do
+-    assert_raise ArgumentError do
++    assert_raises ArgumentError do
+       @base.set(:fiz, 'boom!'){ 'baz' }
+     end
+     assert !@base.respond_to?(:fiz)
+   end
+ 
+   it 'raises an error without value and block' do
+-    assert_raise(ArgumentError) { @base.set(:fiz) }
++    assert_raises(ArgumentError) { @base.set(:fiz) }
+     assert !@base.respond_to?(:fiz)
+   end
+ 
+@@ -46,7 +46,7 @@ class SettingsTest < Test::Unit::TestCase
+   end
+ 
+   it 'raises an error with the app class as value and a block' do
+-    assert_raise ArgumentError do
++    assert_raises ArgumentError do
+       @base.set(:fiz, @base) { 'baz' }
+     end
+     assert !@base.respond_to?(:fiz)
+diff --git a/test/sinatra_test.rb b/test/sinatra_test.rb
+index 9a76c97..b27120a 100644
+--- a/test/sinatra_test.rb
++++ b/test/sinatra_test.rb
+@@ -1,6 +1,6 @@
+ require File.expand_path('../helper', __FILE__)
+ 
+-class SinatraTest < Test::Unit::TestCase
++class SinatraTest < Minitest::Test
+   it 'creates a new Sinatra::Base subclass on new' do
+     app = Sinatra.new { get('/') { 'Hello World' } }
+     assert_same Sinatra::Base, app.superclass
+diff --git a/test/slim_test.rb b/test/slim_test.rb
+index d5a9fb8..a3ad739 100644
+--- a/test/slim_test.rb
++++ b/test/slim_test.rb
+@@ -3,7 +3,7 @@ require File.expand_path('../helper', __FILE__)
+ begin
+ require 'slim'
+ 
+-class SlimTest < Test::Unit::TestCase
++class SlimTest < Minitest::Test
+   def slim_app(&block)
+     mock_app do
+       set :views, File.dirname(__FILE__) + '/views'
+@@ -42,7 +42,7 @@ class SlimTest < Test::Unit::TestCase
+ 
+   it "raises error if template not found" do
+     mock_app { get('/') { slim(:no_such_template) } }
+-    assert_raise(Errno::ENOENT) { get('/') }
++    assert_raises(Errno::ENOENT) { get('/') }
+   end
+ 
+   HTML4_DOCTYPE = "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">"
+diff --git a/test/static_test.rb b/test/static_test.rb
+index fb640b4..988ef04 100644
+--- a/test/static_test.rb
++++ b/test/static_test.rb
+@@ -1,6 +1,6 @@
+ require File.expand_path('../helper', __FILE__)
+ 
+-class StaticTest < Test::Unit::TestCase
++class StaticTest < Minitest::Test
+   setup do
+     mock_app do
+       set :static, true
+@@ -233,4 +233,4 @@ class StaticTest < Test::Unit::TestCase
+     assert response.headers.include?('Last-Modified')
+   end
+ 
+-end
+\ No newline at end of file
++end
+diff --git a/test/streaming_test.rb b/test/streaming_test.rb
+index d307d3b..cc1abe7 100644
+--- a/test/streaming_test.rb
++++ b/test/streaming_test.rb
+@@ -1,6 +1,6 @@
+ require File.expand_path('../helper', __FILE__)
+ 
+-class StreamingTest < Test::Unit::TestCase
++class StreamingTest < Minitest::Test
+   Stream = Sinatra::Helpers::Stream
+ 
+   it 'returns the concatenated body' do
+@@ -105,7 +105,7 @@ class StreamingTest < Test::Unit::TestCase
+     scheduler = MockScheduler.new
+     Stream.new(scheduler) { fail 'should be caught' }.each { }
+     scheduler.defer!
+-    assert_raise(RuntimeError) { scheduler.schedule! }
++    assert_raises(RuntimeError) { scheduler.schedule! }
+   end
+ 
+   it 'does not trigger an infinite loop if you call close in a callback' do
+diff --git a/test/stylus_test.rb b/test/stylus_test.rb
+index acde663..9c7e7fd 100644
+--- a/test/stylus_test.rb
++++ b/test/stylus_test.rb
+@@ -10,7 +10,7 @@ begin
+     raise LoadError, 'unable to find Stylus compiler'
+   end
+ 
+-  class StylusTest < Test::Unit::TestCase
++  class StylusTest < Minitest::Test
+     def stylus_app(options = {}, &block)
+       mock_app do
+         set :views, File.dirname(__FILE__) + '/views'
+@@ -65,7 +65,7 @@ begin
+       mock_app {
+         get('/') { stylus :no_such_template }
+       }
+-      assert_raise(Errno::ENOENT) { get('/') }
++      assert_raises(Errno::ENOENT) { get('/') }
+     end
+ 
+     it "passes stylus options to the stylus engine" do
+diff --git a/test/templates_test.rb b/test/templates_test.rb
+index 9266c6d..b81fb3b 100644
+--- a/test/templates_test.rb
++++ b/test/templates_test.rb
+@@ -14,7 +14,7 @@ class TestTemplate < Tilt::Template
+   Tilt.register 'test', self
+ end
+ 
+-class TemplatesTest < Test::Unit::TestCase
++class TemplatesTest < Minitest::Test
+   def render_app(base=Sinatra::Base, options = {}, &block)
+     base, options = Sinatra::Base, base if base.is_a? Hash
+     mock_app(base) do
+@@ -197,7 +197,7 @@ class TemplatesTest < Test::Unit::TestCase
+   end
+ 
+   test 'inline_templates ignores IO errors' do
+-    assert_nothing_raised { mock_app { set(:inline_templates, '/foo/bar') } }
++    mock_app { set(:inline_templates, '/foo/bar') }
+ 
+     assert @app.templates.empty?
+   end
+diff --git a/test/textile_test.rb b/test/textile_test.rb
+index 907ce63..33e01e0 100644
+--- a/test/textile_test.rb
++++ b/test/textile_test.rb
+@@ -3,7 +3,7 @@ require File.expand_path('../helper', __FILE__)
+ begin
+ require 'redcloth'
+ 
+-class TextileTest < Test::Unit::TestCase
++class TextileTest < Minitest::Test
+   def textile_app(&block)
+     mock_app do
+       set :views, File.dirname(__FILE__) + '/views'
+@@ -26,7 +26,7 @@ class TextileTest < Test::Unit::TestCase
+ 
+   it "raises error if template not found" do
+     mock_app { get('/') { textile(:no_such_template) } }
+-    assert_raise(Errno::ENOENT) { get('/') }
++    assert_raises(Errno::ENOENT) { get('/') }
+   end
+ 
+   it "renders with inline layouts" do
+diff --git a/test/wlang_test.rb b/test/wlang_test.rb
+index 1ac32e3..142ca57 100644
+--- a/test/wlang_test.rb
++++ b/test/wlang_test.rb
+@@ -3,7 +3,7 @@ require File.expand_path('../helper', __FILE__)
+ begin
+ require 'wlang'
+ 
+-class WLangTest < Test::Unit::TestCase
++class WLangTest < Minitest::Test
+   def engine
+     Tilt::WLangTemplate
+   end
+diff --git a/test/yajl_test.rb b/test/yajl_test.rb
+index 69a7d14..2f00f06 100644
+--- a/test/yajl_test.rb
++++ b/test/yajl_test.rb
+@@ -3,7 +3,7 @@ require File.expand_path('../helper', __FILE__)
+ begin
+ require 'yajl'
+ 
+-class YajlTest < Test::Unit::TestCase
++class YajlTest < Minitest::Test
+   def yajl_app(&block)
+     mock_app do
+       set :views, File.dirname(__FILE__) + '/views'
+@@ -26,7 +26,7 @@ class YajlTest < Test::Unit::TestCase
+ 
+   it 'raises error if template not found' do
+     mock_app { get('/') { yajl(:no_such_template) } }
+-    assert_raise(Errno::ENOENT) { get('/') }
++    assert_raises(Errno::ENOENT) { get('/') }
+   end
+ 
+   it 'accepts a :locals option' do

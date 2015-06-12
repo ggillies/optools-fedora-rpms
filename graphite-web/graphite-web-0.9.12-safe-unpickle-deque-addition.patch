@@ -1,0 +1,30 @@
+One possible fix for https://github.com/graphite-project/graphite-web/issues/423
+
+diff --git a/webapp/graphite/util.py b/webapp/graphite/util.py
+index 89709d8..255e5e2 100644
+--- a/webapp/graphite/util.py
++++ b/webapp/graphite/util.py
+@@ -29,6 +29,7 @@ from django.core.exceptions import ObjectDoesNotExist
+ from django.contrib.auth.models import User
+ from graphite.account.models import Profile
+ from graphite.logger import log
++import sys
+ 
+ 
+ # There are a couple different json modules floating around out there with
+@@ -89,6 +90,7 @@ if USING_CPICKLE:
+     PICKLE_SAFE = {
+       'copy_reg': set(['_reconstructor']),
+       '__builtin__': set(['object']),
++      'collections': set(['deque']),
+     }
+ 
+     @classmethod
+@@ -112,6 +114,7 @@ else:
+     PICKLE_SAFE = {
+       'copy_reg': set(['_reconstructor']),
+       '__builtin__': set(['object']),
++      'collections': set(['deque']),
+     }
+ 
+     def find_class(self, module, name):

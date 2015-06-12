@@ -1,0 +1,36 @@
+diff -up ./sensu_configs/systemd/sensu-api.service.bak ./sensu_configs/systemd/sensu-api.service
+--- ./sensu_configs/systemd/sensu-api.service.bak	2015-02-02 09:48:49.774080055 +1000
++++ ./sensu_configs/systemd/sensu-api.service	2015-02-02 09:49:03.937155285 +1000
+@@ -4,7 +4,7 @@ Description=sensu api
+ [Service]
+ User=sensu
+ Group=sensu
+-ExecStart=/opt/sensu/bin/sensu-api -c /etc/sensu/config.json -d /etc/sensu/conf.d -e /etc/sensu/extensions -l /var/log/sensu/sensu-api.log
++ExecStart=/usr/bin/sensu-api -c /etc/sensu/config.json -d /etc/sensu/conf.d -e /etc/sensu/extensions -l /var/log/sensu/sensu-api.log
+ KillMode=process
+ Restart=on-failure
+ RestartSec=1min
+diff -up ./sensu_configs/systemd/sensu-client.service.bak ./sensu_configs/systemd/sensu-client.service
+--- ./sensu_configs/systemd/sensu-client.service.bak	2015-02-02 09:48:53.194098221 +1000
++++ ./sensu_configs/systemd/sensu-client.service	2015-02-02 09:49:11.049193061 +1000
+@@ -4,7 +4,7 @@ Description=sensu client
+ [Service]
+ User=sensu
+ Group=sensu
+-ExecStart=/opt/sensu/bin/sensu-client -c /etc/sensu/config.json -d /etc/sensu/conf.d -e /etc/sensu/extensions -l /var/log/sensu/sensu-client.log
++ExecStart=/usr/bin/sensu-client -c /etc/sensu/config.json -d /etc/sensu/conf.d -e /etc/sensu/extensions -l /var/log/sensu/sensu-client.log
+ KillMode=process
+ Restart=on-failure
+ RestartSec=1min
+diff -up ./sensu_configs/systemd/sensu-server.service.bak ./sensu_configs/systemd/sensu-server.service
+--- ./sensu_configs/systemd/sensu-server.service.bak	2015-02-02 09:48:56.483115691 +1000
++++ ./sensu_configs/systemd/sensu-server.service	2015-02-02 09:49:18.305231603 +1000
+@@ -4,7 +4,7 @@ Description=sensu server
+ [Service]
+ User=sensu
+ Group=sensu
+-ExecStart=/opt/sensu/bin/sensu-server -c /etc/sensu/config.json -d /etc/sensu/conf.d -e /etc/sensu/extensions -l /var/log/sensu/sensu-server.log
++ExecStart=/usr/bin/sensu-server -c /etc/sensu/config.json -d /etc/sensu/conf.d -e /etc/sensu/extensions -l /var/log/sensu/sensu-server.log
+ KillMode=process
+ Restart=on-failure
+ RestartSec=1min

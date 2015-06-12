@@ -1,0 +1,36 @@
+From 380b3cf0e19b31e408a24e180b0ecfac380ff597 Mon Sep 17 00:00:00 2001
+From: Jamie Nguyen <j@jamielinux.com>
+Date: Wed, 1 Oct 2014 14:50:02 +0100
+Subject: [PATCH] Fix build-index.sh variables
+
+---
+ bin/build-index.sh | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/bin/build-index.sh b/bin/build-index.sh
+index ce7b5cc..fdbdd99 100755
+--- a/bin/build-index.sh
++++ b/bin/build-index.sh
+@@ -2,16 +2,16 @@
+ 
+ if [ "$GRAPHITE_ROOT" = "" ]
+ then
+-  GRAPHITE_ROOT="/opt/graphite"
++  GRAPHITE_ROOT="/usr/share/graphite"
+ fi
+ 
+ if [ "$GRAPHITE_STORAGE_DIR" = "" ]
+ then
+-  GRAPHITE_STORAGE_DIR="${GRAPHITE_ROOT}/storage"
++  GRAPHITE_STORAGE_DIR="/var/lib/graphite-web"
+ fi
+ 
+ 
+-WHISPER_DIR="${GRAPHITE_STORAGE_DIR}/whisper"
++WHISPER_DIR="/var/lib/carbon/whisper"
+ 
+ if [ ! -d "$WHISPER_DIR" ]
+ then
+-- 
+1.9.3
+

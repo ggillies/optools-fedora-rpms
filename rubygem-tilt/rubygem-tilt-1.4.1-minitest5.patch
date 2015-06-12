@@ -1,0 +1,1020 @@
+From 117aba73000af76cfd6e8e983fb6e0e111f6158a Mon Sep 17 00:00:00 2001
+From: Josef Stribny <jstribny@redhat.com>
+Date: Fri, 16 Jan 2015 13:07:52 +0100
+Subject: [PATCH] Minitest 5
+
+---
+ test/contest.rb                        | 15 ++------------
+ test/tilt_asciidoctor_test.rb          |  8 ++++----
+ test/tilt_blueclothtemplate_test.rb    |  8 ++++----
+ test/tilt_buildertemplate_test.rb      |  2 +-
+ test/tilt_cache_test.rb                |  2 +-
+ test/tilt_coffeescripttemplate_test.rb |  2 +-
+ test/tilt_compilesite_test.rb          |  2 +-
+ test/tilt_creoletemplate_test.rb       |  4 ++--
+ test/tilt_csv_test.rb                  |  6 +++---
+ test/tilt_erbtemplate_test.rb          | 14 ++++++-------
+ test/tilt_erubistemplate_test.rb       |  9 ++++-----
+ test/tilt_etannitemplate_test.rb       |  8 ++++----
+ test/tilt_fallback_test.rb             |  6 +++---
+ test/tilt_hamltemplate_test.rb         |  8 ++++----
+ test/tilt_kramdown_test.rb             | 11 +++++------
+ test/tilt_lesstemplate_test.rb         |  2 +-
+ test/tilt_liquidtemplate_test.rb       |  2 +-
+ test/tilt_markaby_test.rb              |  4 ++--
+ test/tilt_markdown_test.rb             | 10 +++++-----
+ test/tilt_marukutemplate_test.rb       | 11 +++++------
+ test/tilt_nokogiritemplate_test.rb     |  2 +-
+ test/tilt_radiustemplate_test.rb       |  2 +-
+ test/tilt_rdiscounttemplate_test.rb    | 11 +++++------
+ test/tilt_rdoctemplate_test.rb         |  2 +-
+ test/tilt_redcarpettemplate_test.rb    | 14 ++++++-------
+ test/tilt_redclothtemplate_test.rb     |  2 +-
+ test/tilt_sasstemplate_test.rb         |  4 ++--
+ test/tilt_stringtemplate_test.rb       |  8 ++++----
+ test/tilt_template_test.rb             | 36 +++++++++++++++++-----------------
+ test/tilt_test.rb                      |  8 ++++----
+ test/tilt_wikiclothtemplate_test.rb    |  2 +-
+ test/tilt_yajltemplate_test.rb         |  2 +-
+ 32 files changed, 105 insertions(+), 122 deletions(-)
+
+diff --git a/test/contest.rb b/test/contest.rb
+index 075f941..075264e 100644
+--- a/test/contest.rb
++++ b/test/contest.rb
+@@ -1,21 +1,10 @@
+-require "test/unit"
+-
+-# Test::Unit loads a default test if the suite is empty, whose purpose is to
+-# fail. Since having empty contexts is a common practice, we decided to
+-# overwrite TestSuite#empty? in order to allow them. Having a failure when no
+-# tests have been defined seems counter-intuitive.
+-class Test::Unit::TestSuite
+-  def empty?
+-    false
+-  end
+-end
+-
++require "minitest/autorun"
+ # Contest adds +teardown+, +test+ and +context+ as class methods, and the
+ # instance methods +setup+ and +teardown+ now iterate on the corresponding
+ # blocks. Note that all setup and teardown blocks must be defined with the
+ # block syntax. Adding setup or teardown instance methods defeats the purpose
+ # of this library.
+-class Test::Unit::TestCase
++class Minitest::Test
+   def self.setup(&block)
+     define_method :setup do
+       super(&block)
+diff --git a/test/tilt_asciidoctor_test.rb b/test/tilt_asciidoctor_test.rb
+index 27fccdc..83cb274 100644
+--- a/test/tilt_asciidoctor_test.rb
++++ b/test/tilt_asciidoctor_test.rb
+@@ -4,7 +4,7 @@ require 'tilt'
+ begin
+   require 'asciidoctor'
+ 
+-  class AsciidoctorTemplateTest < Test::Unit::TestCase
++  class AsciidoctorTemplateTest < Minitest::Test
+     HTML5_OUTPUT = "<div class=\"sect1\"><h2 id=\"_hello_world\">Hello World!</h2><div class=\"sectionbody\"></div></div>"
+     DOCBOOK_OUTPUT = "<section id=\"_hello_world\"><title>Hello World!</title></section>"
+ 
+@@ -13,15 +13,15 @@ begin
+     end
+ 
+     test "registered for '.ad' files" do
+-      assert Tilt.mappings['ad'].include?(Tilt::AsciidoctorTemplate)
++      raise unless Tilt.mappings['ad'].include?(Tilt::AsciidoctorTemplate)
+     end
+ 
+     test "registered for '.adoc' files" do
+-      assert Tilt.mappings['adoc'].include?(Tilt::AsciidoctorTemplate)
++      raise unless Tilt.mappings['adoc'].include?(Tilt::AsciidoctorTemplate)
+     end
+ 
+     test "registered for '.asciidoc' files" do
+-      assert Tilt.mappings['asciidoc'].include?(Tilt::AsciidoctorTemplate)
++      raise unless Tilt.mappings['asciidoc'].include?(Tilt::AsciidoctorTemplate)
+     end
+ 
+     test "preparing and evaluating html5 templates on #render" do
+diff --git a/test/tilt_blueclothtemplate_test.rb b/test/tilt_blueclothtemplate_test.rb
+index 1952ef9..e7f2538 100644
+--- a/test/tilt_blueclothtemplate_test.rb
++++ b/test/tilt_blueclothtemplate_test.rb
+@@ -4,17 +4,17 @@ require 'tilt'
+ begin
+   require 'bluecloth'
+ 
+-  class BlueClothTemplateTest < Test::Unit::TestCase
++  class BlueClothTemplateTest < Minitest::Test
+     test "registered for '.md' files" do
+-      assert Tilt.mappings['md'].include?(Tilt::BlueClothTemplate)
++      raise unless Tilt.mappings['md'].include?(Tilt::BlueClothTemplate)
+     end
+ 
+     test "registered for '.mkd' files" do
+-      assert Tilt.mappings['mkd'].include?(Tilt::BlueClothTemplate)
++      raise unless Tilt.mappings['mkd'].include?(Tilt::BlueClothTemplate)
+     end
+ 
+     test "registered for '.markdown' files" do
+-      assert Tilt.mappings['markdown'].include?(Tilt::BlueClothTemplate)
++      raise unless Tilt.mappings['markdown'].include?(Tilt::BlueClothTemplate)
+     end
+ 
+     test "preparing and evaluating templates on #render" do
+diff --git a/test/tilt_buildertemplate_test.rb b/test/tilt_buildertemplate_test.rb
+index 44d8deb..4d4f4cc 100644
+--- a/test/tilt_buildertemplate_test.rb
++++ b/test/tilt_buildertemplate_test.rb
+@@ -3,7 +3,7 @@ require 'tilt'
+ 
+ begin
+   require 'builder'
+-  class BuilderTemplateTest < Test::Unit::TestCase
++  class BuilderTemplateTest < Minitest::Test
+     test "registered for '.builder' files" do
+       assert_equal Tilt::BuilderTemplate, Tilt['test.builder']
+       assert_equal Tilt::BuilderTemplate, Tilt['test.xml.builder']
+diff --git a/test/tilt_cache_test.rb b/test/tilt_cache_test.rb
+index 8c8e050..8618665 100644
+--- a/test/tilt_cache_test.rb
++++ b/test/tilt_cache_test.rb
+@@ -1,7 +1,7 @@
+ require 'contest'
+ require 'tilt'
+ 
+-class TiltCacheTest < Test::Unit::TestCase
++class TiltCacheTest < Minitest::Test
+   setup { @cache = Tilt::Cache.new }
+ 
+   test "caching with single simple argument to #fetch" do
+diff --git a/test/tilt_coffeescripttemplate_test.rb b/test/tilt_coffeescripttemplate_test.rb
+index 377b6f7..b1efda0 100644
+--- a/test/tilt_coffeescripttemplate_test.rb
++++ b/test/tilt_coffeescripttemplate_test.rb
+@@ -4,17 +4,7 @@ require 'tilt'
+ begin
+   require 'coffee_script'
+ 
+-  class CoffeeScriptTemplateTest < Test::Unit::TestCase
+-
+-    unless method_defined?(:assert_not_match)
+-      # assert_not_match is missing on 1.8.7, which uses assert_no_match
+-      def assert_not_match(a, b)
+-        unless a.kind_of?(Regexp)
+-          a = Regexp.new(Regexp.escape(a))
+-        end
+-        assert_no_match(a,b)
+-      end
+-    end
++  class CoffeeScriptTemplateTest < Minitest::Test
+ 
+     test "is registered for '.coffee' files" do
+       assert_equal Tilt::CoffeeScriptTemplate, Tilt['test.coffee']
+@@ -42,11 +32,11 @@
+       assert_match "puts(\"Hello \" + name);\n", template.render
+ 
+       template = Tilt::CoffeeScriptTemplate.new(:bare => true) { str }
+-      assert_not_match "(function() {", template.render
++      refute_match "(function() {", template.render
+       assert_equal "var name;\n\nname = \"Josh\";\n\nputs(\"Hello \" + name);\n", template.render
+ 
+       template2 = Tilt::CoffeeScriptTemplate.new(:no_wrap => true) { str}
+-      assert_not_match "(function() {", template.render
++      refute_match "(function() {", template.render
+       assert_equal "var name;\n\nname = \"Josh\";\n\nputs(\"Hello \" + name);\n", template.render
+     end
+ 
+@@ -69,13 +59,13 @@
+       test "overridden by :bare" do
+         template = Tilt::CoffeeScriptTemplate.new(:bare => true) { |t| 'name = "Josh"; puts "Hello, #{name}"' }
+         assert_match "puts(\"Hello, \" + name);", template.render
+-        assert_not_match "(function() {", template.render
++        refute_match "(function() {", template.render
+       end
+ 
+       test "overridden by :no_wrap" do
+         template = Tilt::CoffeeScriptTemplate.new(:no_wrap => true) { |t| 'name = "Josh"; puts "Hello, #{name}"' }
+         assert_match "puts(\"Hello, \" + name);", template.render
+-        assert_not_match "(function() {", template.render
++        refute_match "(function() {", template.render
+       end
+     end
+ 
+@@ -92,7 +82,7 @@
+       test "no options" do
+         template = Tilt::CoffeeScriptTemplate.new { |t| 'name = "Josh"; puts "Hello, #{name}"' }
+         assert_match "puts(\"Hello, \" + name);", template.render
+-        assert_not_match "(function() {", template.render
++        refute_match "(function() {", template.render
+       end
+ 
+       test "overridden by :bare" do
+diff --git a/test/tilt_compilesite_test.rb b/test/tilt_compilesite_test.rb
+index 2944c84..69444c0 100644
+--- a/test/tilt_compilesite_test.rb
++++ b/test/tilt_compilesite_test.rb
+@@ -2,7 +2,7 @@ require 'contest'
+ require 'tilt'
+ require 'thread'
+ 
+-class CompileSiteTest < Test::Unit::TestCase
++class CompileSiteTest < Minitest::Test
+   def setup
+     GC.start
+   end
+diff --git a/test/tilt_creoletemplate_test.rb b/test/tilt_creoletemplate_test.rb
+index b4e8098..7ea496b 100644
+--- a/test/tilt_creoletemplate_test.rb
++++ b/test/tilt_creoletemplate_test.rb
+@@ -4,13 +4,13 @@ require 'tilt'
+ begin
+   require 'creole'
+ 
+-  class CreoleTemplateTest < Test::Unit::TestCase
++  class CreoleTemplateTest < Minitest::Test
+     test "is registered for '.creole' files" do
+       assert_equal Tilt::CreoleTemplate, Tilt['test.creole']
+     end
+ 
+     test "registered for '.wiki' files" do
+-      assert Tilt.mappings['wiki'].include?(Tilt::CreoleTemplate)
++      raise unless Tilt.mappings['wiki'].include?(Tilt::CreoleTemplate)
+     end
+ 
+     test "compiles and evaluates the template on #render" do
+diff --git a/test/tilt_csv_test.rb b/test/tilt_csv_test.rb
+index c11ce03..8e65b34 100644
+--- a/test/tilt_csv_test.rb
++++ b/test/tilt_csv_test.rb
+@@ -8,10 +8,10 @@ begin
+     require 'fastercsv'
+   end
+ 
+-  class CSVTemplateTest < Test::Unit::TestCase
++  class CSVTemplateTest < Minitest::Test
+ 
+     test "registered for '.rcsv' files" do
+-      assert Tilt.mappings['rcsv'].include?(Tilt::CSVTemplate)
++      raise unless Tilt.mappings['rcsv'].include?(Tilt::CSVTemplate)
+     end
+ 
+     test "compiles and evaluates the template on #render" do
+@@ -45,7 +45,7 @@ begin
+       rescue => boom
+         assert_kind_of NameError, boom
+         line = boom.backtrace.grep(/^test\.csv:/).first
+-        assert line, "Backtrace didn't contain test.csv"
++        raise unless line
+         file, line, meth = line.split(":")
+         assert_equal '4', line
+       end
+diff --git a/test/tilt_erbtemplate_test.rb b/test/tilt_erbtemplate_test.rb
+index 5faffcb..0ad4626 100644
+--- a/test/tilt_erbtemplate_test.rb
++++ b/test/tilt_erbtemplate_test.rb
+@@ -4,13 +4,13 @@ require 'tilt'
+ require 'erb'
+ require 'tempfile'
+ 
+-class ERBTemplateTest < Test::Unit::TestCase
++class ERBTemplateTest < Minitest::Test
+   test "registered for '.erb' files" do
+-    assert Tilt.mappings['erb'].include?(Tilt::ERBTemplate)
++    raise unless Tilt.mappings['erb'].include?(Tilt::ERBTemplate)
+   end
+ 
+   test "registered for '.rhtml' files" do
+-    assert Tilt.mappings['rhtml'].include?(Tilt::ERBTemplate)
++    raise unless Tilt.mappings['rhtml'].include?(Tilt::ERBTemplate)
+   end
+ 
+   test "loading and evaluating templates on #render" do
+@@ -45,7 +45,7 @@ class ERBTemplateTest < Test::Unit::TestCase
+       template = Tilt::ERBTemplate.new { '<% self.exposed_buffer = @_out_buf %>hey' }
+       scope = MockOutputVariableScope.new
+       template.render(scope)
+-      assert_not_nil scope.exposed_buffer
++      raise unless scope.exposed_buffer
+       assert_equal scope.exposed_buffer, 'hey'
+     ensure
+       Tilt::ERBTemplate.default_output_variable = '_erbout'
+@@ -67,7 +67,7 @@ class ERBTemplateTest < Test::Unit::TestCase
+     rescue => boom
+       assert_kind_of NameError, boom
+       line = boom.backtrace.grep(/^test\.erb:/).first
+-      assert line, "Backtrace didn't contain test.erb"
++      raise unless line
+       file, line, meth = line.split(":")
+       assert_equal '13', line
+     end
+@@ -118,7 +118,7 @@ class ERBTemplateTest < Test::Unit::TestCase
+   end
+ end
+ 
+-class CompiledERBTemplateTest < Test::Unit::TestCase
++class CompiledERBTemplateTest < Minitest::Test
+   def teardown
+     GC.start
+   end
+@@ -169,7 +169,7 @@ class CompiledERBTemplateTest < Test::Unit::TestCase
+     rescue => boom
+       assert_kind_of NameError, boom
+       line = boom.backtrace.grep(/^test\.erb:/).first
+-      assert line, "Backtrace didn't contain test.erb"
++      raise unless line
+       file, line, meth = line.split(":")
+       assert_equal '13', line
+     end
+diff --git a/test/tilt_erubistemplate_test.rb b/test/tilt_erubistemplate_test.rb
+index f908c0f..0859063 100644
+--- a/test/tilt_erubistemplate_test.rb
++++ b/test/tilt_erubistemplate_test.rb
+@@ -3,7 +3,7 @@ require 'tilt'
+ 
+ begin
+   require 'erubis'
+-  class ErubisTemplateTest < Test::Unit::TestCase
++  class ErubisTemplateTest < Minitest::Test
+     test "registered for '.erubis' files" do
+       assert_equal Tilt::ErubisTemplate, Tilt['test.erubis']
+       assert_equal Tilt::ErubisTemplate, Tilt['test.html.erubis']
+@@ -14,8 +14,7 @@ begin
+         mappings = Tilt.mappings[ext]
+         erubis_idx = mappings.index(Tilt::ErubisTemplate)
+         erb_idx = mappings.index(Tilt::ERBTemplate)
+-        assert erubis_idx < erb_idx,
+-          "#{erubis_idx} should be lower than #{erb_idx}"
++        raise unless erubis_idx < erb_idx
+       end
+     end
+ 
+@@ -51,7 +50,7 @@ begin
+         template = Tilt::ErubisTemplate.new { '<% self.exposed_buffer = @_out_buf %>hey' }
+         scope = MockOutputVariableScope.new
+         template.render(scope)
+-        assert_not_nil scope.exposed_buffer
++        raise unless scope.exposed_buffer
+         assert_equal scope.exposed_buffer, 'hey'
+       ensure
+         Tilt::ErubisTemplate.default_output_variable = '_erbout'
+@@ -73,7 +72,7 @@ begin
+       rescue => boom
+         assert_kind_of NameError, boom
+         line = boom.backtrace.grep(/^test\.erubis:/).first
+-        assert line, "Backtrace didn't contain test.erubis"
++        raise unless line
+         file, line, meth = line.split(":")
+         assert_equal '13', line
+       end
+diff --git a/test/tilt_etannitemplate_test.rb b/test/tilt_etannitemplate_test.rb
+index 32c81e8..e9a16ea 100644
+--- a/test/tilt_etannitemplate_test.rb
++++ b/test/tilt_etannitemplate_test.rb
+@@ -1,7 +1,7 @@
+ require 'contest'
+ require 'tilt'
+ 
+-class EtanniTemplateTest < Test::Unit::TestCase
++class EtanniTemplateTest < Minitest::Test
+   test "registered for '.etn' files" do
+     assert_equal Tilt::EtanniTemplate, Tilt['test.etn']
+   end
+@@ -53,7 +53,7 @@ class EtanniTemplateTest < Test::Unit::TestCase
+     rescue => boom
+       assert_kind_of NameError, boom
+       line = boom.backtrace.grep(/^test\.etn:/).first
+-      assert line, "Backtrace didn't contain test.etn"
++      raise unless line
+       file, line, meth = line.split(":")
+       assert_equal '13', line
+     end
+@@ -77,7 +77,7 @@ class EtanniTemplateTest < Test::Unit::TestCase
+ end
+ 
+ 
+-class CompiledEtanniTemplateTest < Test::Unit::TestCase
++class CompiledEtanniTemplateTest < Minitest::Test
+   def teardown
+     GC.start
+   end
+@@ -139,7 +139,7 @@ class CompiledEtanniTemplateTest < Test::Unit::TestCase
+       assert_kind_of NameError, boom
+       line = boom.backtrace.first
+       line = boom.backtrace.grep(/^test\.etn:/).first
+-      assert line, "Backtrace didn't contain test.etn"
++      raise unless line
+       file, line, meth = line.split(":")
+       assert_equal '13', line
+     end
+diff --git a/test/tilt_fallback_test.rb b/test/tilt_fallback_test.rb
+index 067fae1..4057257 100644
+--- a/test/tilt_fallback_test.rb
++++ b/test/tilt_fallback_test.rb
+@@ -1,7 +1,7 @@
+ require 'contest'
+ require 'tilt'
+ 
+-class TiltFallbackTest < Test::Unit::TestCase
++class TiltFallbackTest < Minitest::Test
+   class FailTemplate  < Tilt::Template
+     def self.engine_initialized?; false end
+     def prepare;                        end
+@@ -66,13 +66,13 @@ class TiltFallbackTest < Test::Unit::TestCase
+     Tilt.register("md", FailTemplate)
+     Tilt.register("md", FailTemplate2)
+ 
+-    exc = assert_raise(LoadError) { Tilt["md"] }
++    exc = assert_raises(LoadError) { Tilt["md"] }
+     assert_match /FailTemplate2/, exc.message
+   end
+ 
+   test ".prefer should also register the template" do
+     Tilt.prefer(WinTemplate, "md")
+-    assert Tilt.registered?("md")
++    raise unless Tilt.registered?("md")
+   end
+ 
+   test ".prefer always win" do
+diff --git a/test/tilt_hamltemplate_test.rb b/test/tilt_hamltemplate_test.rb
+index 8466675..479ea43 100644
+--- a/test/tilt_hamltemplate_test.rb
++++ b/test/tilt_hamltemplate_test.rb
+@@ -7,7 +7,7 @@ begin
+ 
+   require 'haml'
+ 
+-  class HamlTemplateTest < Test::Unit::TestCase
++  class HamlTemplateTest < Minitest::Test
+     test "registered for '.haml' files" do
+       assert_equal Tilt::HamlTemplate, Tilt['test.haml']
+     end
+@@ -49,7 +49,7 @@ begin
+       rescue => boom
+         assert_kind_of NameError, boom
+         line = boom.backtrace.grep(/^test\.haml:/).first
+-        assert line, "Backtrace didn't contain test.haml"
++        raise unless line
+         file, line, meth = line.split(":")
+         assert_equal '12', line
+       end
+@@ -71,7 +71,7 @@ begin
+     end
+   end
+ 
+-  class CompiledHamlTemplateTest < Test::Unit::TestCase
++  class CompiledHamlTemplateTest < Minitest::Test
+     class Scope
+     end
+ 
+@@ -109,7 +109,7 @@ begin
+       rescue => boom
+         assert_kind_of NameError, boom
+         line = boom.backtrace.grep(/^test\.haml:/).first
+-        assert line, "Backtrace didn't contain test.haml"
++        raise unless line
+         file, line, meth = line.split(":")
+         assert_equal '12', line
+       end
+diff --git a/test/tilt_kramdown_test.rb b/test/tilt_kramdown_test.rb
+index c031709..a0d0aa6 100644
+--- a/test/tilt_kramdown_test.rb
++++ b/test/tilt_kramdown_test.rb
+@@ -4,17 +4,17 @@ require 'tilt'
+ begin
+   require 'kramdown'
+ 
+-  class MarukuTemplateTest < Test::Unit::TestCase
++  class MarukuTemplateTest < Minitest::Test
+     test "registered for '.md' files" do
+-      assert Tilt.mappings['md'].include?(Tilt::KramdownTemplate)
++      raise unless Tilt.mappings['md'].include?(Tilt::KramdownTemplate)
+     end
+ 
+     test "registered for '.mkd' files" do
+-      assert Tilt.mappings['mkd'].include?(Tilt::KramdownTemplate)
++      raise unless Tilt.mappings['mkd'].include?(Tilt::KramdownTemplate)
+     end
+ 
+     test "registered for '.markdown' files" do
+-      assert Tilt.mappings['markdown'].include?(Tilt::KramdownTemplate)
++      raise unless Tilt.mappings['markdown'].include?(Tilt::KramdownTemplate)
+     end
+ 
+     test "registered above MarukuTemplate" do
+@@ -22,8 +22,7 @@ begin
+         mappings = Tilt.mappings[ext]
+         kram_idx = mappings.index(Tilt::KramdownTemplate)
+         maru_idx = mappings.index(Tilt::MarukuTemplate)
+-        assert kram_idx < maru_idx,
+-          "#{kram_idx} should be lower than #{maru_idx}"
++        raise unless kram_idx < maru_idx
+       end
+     end
+ 
+diff --git a/test/tilt_lesstemplate_test.rb b/test/tilt_lesstemplate_test.rb
+index 9b9a3e8..9260839 100644
+--- a/test/tilt_lesstemplate_test.rb
++++ b/test/tilt_lesstemplate_test.rb
+@@ -5,7 +5,7 @@ begin
+   require 'pathname'
+   require 'less'
+ 
+-  class LessTemplateTest < Test::Unit::TestCase
++  class LessTemplateTest < Minitest::Test
+     def assert_similar(a, b)
+       assert_equal a.gsub(/\s+/m, ' '), b.gsub(/\s+/m, ' ')
+     end
+diff --git a/test/tilt_liquidtemplate_test.rb b/test/tilt_liquidtemplate_test.rb
+index 13db928..1f01f4c 100644
+--- a/test/tilt_liquidtemplate_test.rb
++++ b/test/tilt_liquidtemplate_test.rb
+@@ -4,7 +4,7 @@ require 'tilt'
+ begin
+   require 'liquid'
+ 
+-  class LiquidTemplateTest < Test::Unit::TestCase
++  class LiquidTemplateTest < Minitest::Test
+     test "registered for '.liquid' files" do
+       assert_equal Tilt::LiquidTemplate, Tilt['test.liquid']
+     end
+diff --git a/test/tilt_markaby_test.rb b/test/tilt_markaby_test.rb
+index 392abac..bcd6217 100644
+--- a/test/tilt_markaby_test.rb
++++ b/test/tilt_markaby_test.rb
+@@ -4,7 +4,7 @@ require 'tilt'
+ begin
+   require 'markaby'
+ 
+-  class MarkabyTiltTest <  Test::Unit::TestCase
++  class MarkabyTiltTest <  Minitest::Test
+     def setup
+       @block = lambda do |t|
+         File.read(File.dirname(__FILE__) + "/#{t.file}")
+@@ -69,7 +69,7 @@ begin
+     end
+ 
+     test "should return a new instance of the implementation class (when calling Tilt.new)" do
+-      assert ::Tilt.new(File.dirname(__FILE__) + "/markaby/markaby.mab").kind_of?(Tilt::MarkabyTemplate)
++      raise unless ::Tilt.new(File.dirname(__FILE__) + "/markaby/markaby.mab").kind_of?(Tilt::MarkabyTemplate)
+     end
+ 
+     test "should be able to evaluate block style templates" do
+diff --git a/test/tilt_markdown_test.rb b/test/tilt_markdown_test.rb
+index 9e864a7..f3c741c 100644
+--- a/test/tilt_markdown_test.rb
++++ b/test/tilt_markdown_test.rb
+@@ -79,7 +79,7 @@ end
+ begin
+   require 'rdiscount'
+ 
+-  class MarkdownRDiscountTest < Test::Unit::TestCase
++  class MarkdownRDiscountTest < Minitest::Test
+     include MarkdownTests
+     template Tilt::RDiscountTemplate
+   end
+@@ -90,7 +90,7 @@ end
+ begin
+   require 'redcarpet'
+ 
+-  class MarkdownRedcarpetTest < Test::Unit::TestCase
++  class MarkdownRedcarpetTest < Minitest::Test
+     include MarkdownTests
+     template Tilt::RedcarpetTemplate
+     # Doesn't support escaping
+@@ -119,7 +119,7 @@ end
+ begin
+   require 'bluecloth'
+ 
+-  class MarkdownBlueClothTest < Test::Unit::TestCase
++  class MarkdownBlueClothTest < Minitest::Test
+     include MarkdownTests
+     template Tilt::BlueClothTemplate
+   end
+@@ -130,7 +130,7 @@ end
+ begin
+   require 'kramdown'
+ 
+-  class MarkdownKramdownTest < Test::Unit::TestCase
++  class MarkdownKramdownTest < Minitest::Test
+     include MarkdownTests
+     template Tilt::KramdownTemplate
+     # Doesn't support escaping
+@@ -148,7 +148,7 @@ end
+ begin
+   require 'maruku'
+ 
+-  class MarkdownMarukuTest < Test::Unit::TestCase
++  class MarkdownMarukuTest < Minitest::Test
+     include MarkdownTests
+     template Tilt::MarukuTemplate
+     # Doesn't support escaping
+diff --git a/test/tilt_marukutemplate_test.rb b/test/tilt_marukutemplate_test.rb
+index 1be67db..f739d78 100644
+--- a/test/tilt_marukutemplate_test.rb
++++ b/test/tilt_marukutemplate_test.rb
+@@ -4,17 +4,17 @@ require 'tilt'
+ begin
+   require 'maruku'
+ 
+-  class MarukuTemplateTest < Test::Unit::TestCase
++  class MarukuTemplateTest < Minitest::Test
+     test "registered for '.md' files" do
+-      assert Tilt.mappings['md'].include?(Tilt::MarukuTemplate)
++      raise unless Tilt.mappings['md'].include?(Tilt::MarukuTemplate)
+     end
+ 
+     test "registered for '.mkd' files" do
+-      assert Tilt.mappings['mkd'].include?(Tilt::MarukuTemplate)
++      raise unless Tilt.mappings['mkd'].include?(Tilt::MarukuTemplate)
+     end
+ 
+     test "registered for '.markdown' files" do
+-      assert Tilt.mappings['markdown'].include?(Tilt::MarukuTemplate)
++      raise unless Tilt.mappings['markdown'].include?(Tilt::MarukuTemplate)
+     end
+ 
+     test "registered below Kramdown" do
+@@ -22,8 +22,7 @@ begin
+         mappings = Tilt.mappings[ext]
+         kram_idx = mappings.index(Tilt::KramdownTemplate)
+         maru_idx = mappings.index(Tilt::MarukuTemplate)
+-        assert maru_idx > kram_idx,
+-          "#{maru_idx} should be higher than #{kram_idx}"
++        raise unless maru_idx > kram_idx
+       end
+     end
+ 
+diff --git a/test/tilt_nokogiritemplate_test.rb b/test/tilt_nokogiritemplate_test.rb
+index 22225e8..fdbe65f 100644
+--- a/test/tilt_nokogiritemplate_test.rb
++++ b/test/tilt_nokogiritemplate_test.rb
+@@ -3,7 +3,7 @@ require 'tilt'
+ 
+ begin
+   require 'nokogiri'
+-  class NokogiriTemplateTest < Test::Unit::TestCase
++  class NokogiriTemplateTest < Minitest::Test
+     test "registered for '.nokogiri' files" do
+       assert_equal Tilt::NokogiriTemplate, Tilt['test.nokogiri']
+       assert_equal Tilt::NokogiriTemplate, Tilt['test.xml.nokogiri']
+diff --git a/test/tilt_radiustemplate_test.rb b/test/tilt_radiustemplate_test.rb
+index 1db5b4b..68e7ea1 100644
+--- a/test/tilt_radiustemplate_test.rb
++++ b/test/tilt_radiustemplate_test.rb
+@@ -8,7 +8,7 @@ begin
+   # Remove when fixed upstream.
+   raise LoadError if RUBY_VERSION >= "1.9.1" and Radius.version < "0.7"
+ 
+-  class RadiusTemplateTest < Test::Unit::TestCase
++  class RadiusTemplateTest < Minitest::Test
+     test "registered for '.radius' files" do
+       assert_equal Tilt::RadiusTemplate, Tilt['test.radius']
+     end
+diff --git a/test/tilt_rdiscounttemplate_test.rb b/test/tilt_rdiscounttemplate_test.rb
+index 35ccbaf..3a257de 100644
+--- a/test/tilt_rdiscounttemplate_test.rb
++++ b/test/tilt_rdiscounttemplate_test.rb
+@@ -4,17 +4,17 @@ require 'tilt'
+ begin
+   require 'rdiscount'
+ 
+-  class RDiscountTemplateTest < Test::Unit::TestCase
++  class RDiscountTemplateTest < Minitest::Test
+     test "registered for '.md' files" do
+-      assert Tilt.mappings['md'].include?(Tilt::RDiscountTemplate)
++      raise unless Tilt.mappings['md'].include?(Tilt::RDiscountTemplate)
+     end
+ 
+     test "registered for '.mkd' files" do
+-      assert Tilt.mappings['mkd'].include?(Tilt::RDiscountTemplate)
++      raise unless Tilt.mappings['mkd'].include?(Tilt::RDiscountTemplate)
+     end
+ 
+     test "registered for '.markdown' files" do
+-      assert Tilt.mappings['markdown'].include?(Tilt::RDiscountTemplate)
++      raise unless Tilt.mappings['markdown'].include?(Tilt::RDiscountTemplate)
+     end
+ 
+     test "registered above BlueCloth" do
+@@ -22,8 +22,7 @@ begin
+         mappings = Tilt.mappings[ext]
+         blue_idx = mappings.index(Tilt::BlueClothTemplate)
+         rdis_idx = mappings.index(Tilt::RDiscountTemplate)
+-        assert rdis_idx < blue_idx,
+-          "#{rdis_idx} should be lower than #{blue_idx}"
++        raise unless rdis_idx < blue_idx
+       end
+     end
+ 
+diff --git a/test/tilt_rdoctemplate_test.rb b/test/tilt_rdoctemplate_test.rb
+index 5a729ea..b886889 100644
+--- a/test/tilt_rdoctemplate_test.rb
++++ b/test/tilt_rdoctemplate_test.rb
+@@ -5,7 +5,7 @@ begin
+   require 'rdoc'
+   require 'rdoc/markup'
+   require 'rdoc/markup/to_html'
+-  class RDocTemplateTest < Test::Unit::TestCase
++  class RDocTemplateTest < Minitest::Test
+     test "is registered for '.rdoc' files" do
+       assert_equal Tilt::RDocTemplate, Tilt['test.rdoc']
+     end
+diff --git a/test/tilt_redcarpettemplate_test.rb b/test/tilt_redcarpettemplate_test.rb
+index f675b47..2d380ce 100644
+--- a/test/tilt_redcarpettemplate_test.rb
++++ b/test/tilt_redcarpettemplate_test.rb
+@@ -4,17 +4,17 @@ require 'tilt'
+ begin
+   require 'redcarpet'
+ 
+-  class RedcarpetTemplateTest < Test::Unit::TestCase
++  class RedcarpetTemplateTest < Minitest::Test
+     test "registered for '.md' files" do
+-      assert Tilt.mappings['md'].include?(Tilt::RedcarpetTemplate)
++      raise unless Tilt.mappings['md'].include?(Tilt::RedcarpetTemplate)
+     end
+ 
+     test "registered for '.mkd' files" do
+-      assert Tilt.mappings['mkd'].include?(Tilt::RedcarpetTemplate)
++      raise unless Tilt.mappings['mkd'].include?(Tilt::RedcarpetTemplate)
+     end
+ 
+     test "registered for '.markdown' files" do
+-      assert Tilt.mappings['markdown'].include?(Tilt::RedcarpetTemplate)
++      raise unless Tilt.mappings['markdown'].include?(Tilt::RedcarpetTemplate)
+     end
+ 
+     test "registered above BlueCloth" do
+@@ -22,8 +22,7 @@ begin
+         mappings = Tilt.mappings[ext]
+         blue_idx = mappings.index(Tilt::BlueClothTemplate)
+         redc_idx = mappings.index(Tilt::RedcarpetTemplate)
+-        assert redc_idx < blue_idx,
+-          "#{redc_idx} should be lower than #{blue_idx}"
++        raise unless redc_idx < blue_idx
+       end
+     end
+ 
+@@ -32,8 +31,7 @@ begin
+         mappings = Tilt.mappings[ext]
+         rdis_idx = mappings.index(Tilt::RDiscountTemplate)
+         redc_idx = mappings.index(Tilt::RedcarpetTemplate)
+-        assert redc_idx < rdis_idx,
+-          "#{redc_idx} should be lower than #{rdis_idx}"
++        raise unless redc_idx < rdis_idx
+       end
+     end
+ 
+diff --git a/test/tilt_redclothtemplate_test.rb b/test/tilt_redclothtemplate_test.rb
+index 2d94a4c..3643d7a 100644
+--- a/test/tilt_redclothtemplate_test.rb
++++ b/test/tilt_redclothtemplate_test.rb
+@@ -4,7 +4,7 @@ require 'tilt'
+ begin
+   require 'redcloth'
+ 
+-  class RedClothTemplateTest < Test::Unit::TestCase
++  class RedClothTemplateTest < Minitest::Test
+     test "is registered for '.textile' files" do
+       assert_equal Tilt::RedClothTemplate, Tilt['test.textile']
+     end
+diff --git a/test/tilt_sasstemplate_test.rb b/test/tilt_sasstemplate_test.rb
+index be822af..13ff5ee 100644
+--- a/test/tilt_sasstemplate_test.rb
++++ b/test/tilt_sasstemplate_test.rb
+@@ -4,7 +4,7 @@ require 'tilt'
+ begin
+   require 'sass'
+ 
+-  class SassTemplateTest < Test::Unit::TestCase
++  class SassTemplateTest < Minitest::Test
+     test "is registered for '.sass' files" do
+       assert_equal Tilt::SassTemplate, Tilt['test.sass']
+     end
+@@ -20,7 +20,7 @@ begin
+     end
+   end
+ 
+-  class ScssTemplateTest < Test::Unit::TestCase
++  class ScssTemplateTest < Minitest::Test
+     test "is registered for '.scss' files" do
+       assert_equal Tilt::ScssTemplate, Tilt['test.scss']
+     end
+diff --git a/test/tilt_stringtemplate_test.rb b/test/tilt_stringtemplate_test.rb
+index f0a8919..72c1586 100644
+--- a/test/tilt_stringtemplate_test.rb
++++ b/test/tilt_stringtemplate_test.rb
+@@ -1,7 +1,7 @@
+ require 'contest'
+ require 'tilt'
+ 
+-class StringTemplateTest < Test::Unit::TestCase
++class StringTemplateTest < Minitest::Test
+   test "registered for '.str' files" do
+     assert_equal Tilt::StringTemplate, Tilt['test.str']
+   end
+@@ -49,7 +49,7 @@ class StringTemplateTest < Test::Unit::TestCase
+     rescue => boom
+       assert_kind_of NameError, boom
+       line = boom.backtrace.grep(/^test\.str:/).first
+-      assert line, "Backtrace didn't contain test.str"
++      raise unless line
+       file, line, meth = line.split(":")
+       assert_equal '13', line
+     end
+@@ -73,7 +73,7 @@ class StringTemplateTest < Test::Unit::TestCase
+ end
+ 
+ 
+-class CompiledStringTemplateTest < Test::Unit::TestCase
++class CompiledStringTemplateTest < Minitest::Test
+   def teardown
+     GC.start
+   end
+@@ -136,7 +136,7 @@ class CompiledStringTemplateTest < Test::Unit::TestCase
+       assert_kind_of NameError, boom
+       line = boom.backtrace.first
+       line = boom.backtrace.grep(/^test\.str:/).first
+-      assert line, "Backtrace didn't contain test.str"
++      raise unless line
+       file, line, meth = line.split(":")
+       assert_equal '13', line
+     end
+diff --git a/test/tilt_template_test.rb b/test/tilt_template_test.rb
+index 111a141..12bccbf 100644
+--- a/test/tilt_template_test.rb
++++ b/test/tilt_template_test.rb
+@@ -3,7 +3,7 @@ require 'contest'
+ require 'tilt'
+ require 'tempfile'
+ 
+-class TiltTemplateTest < Test::Unit::TestCase
++class TiltTemplateTest < Minitest::Test
+ 
+   class MockTemplate < Tilt::Template
+     def prepare
+@@ -11,7 +11,7 @@ class TiltTemplateTest < Test::Unit::TestCase
+   end
+ 
+   test "needs a file or block" do
+-    assert_raise(ArgumentError) { Tilt::Template.new }
++    assert_raises(ArgumentError) { Tilt::Template.new }
+   end
+ 
+   test "initializing with a file" do
+@@ -49,8 +49,8 @@ class TiltTemplateTest < Test::Unit::TestCase
+ 
+   test "uses a default filename for #eval_file when no file provided" do
+     inst = MockTemplate.new { 'Hi' }
+-    assert_not_nil inst.eval_file
+-    assert !inst.eval_file.include?("\n")
++    raise unless inst.eval_file
++    raise unless !inst.eval_file.include?("\n")
+   end
+ 
+   test "calculating template's #basename" do
+@@ -86,7 +86,7 @@ class TiltTemplateTest < Test::Unit::TestCase
+     assert_equal 0, InitializingMockTemplate.initialized_count
+ 
+     InitializingMockTemplate.new { "Hello World!" }
+-    assert InitializingMockTemplate.engine_initialized
++    raise unless InitializingMockTemplate.engine_initialized
+     assert_equal 1, InitializingMockTemplate.initialized_count
+ 
+     InitializingMockTemplate.new { "Hello World!" }
+@@ -94,30 +94,30 @@ class TiltTemplateTest < Test::Unit::TestCase
+   end
+ 
+   class PreparingMockTemplate < Tilt::Template
+-    include Test::Unit::Assertions
++    include Minitest::Assertions
+     def prepare
+-      assert !data.nil?
++      raise unless !data.nil?
+       @prepared = true
+     end
+     def prepared? ; @prepared ; end
+   end
+ 
+   test "raises NotImplementedError when #prepare not defined" do
+-    assert_raise(NotImplementedError) { Tilt::Template.new { |template| "Hello World!" } }
++    assert_raises(NotImplementedError) { Tilt::Template.new { |template| "Hello World!" } }
+   end
+ 
+   test "raises NotImplementedError when #evaluate or #template_source not defined" do
+     inst = PreparingMockTemplate.new { |t| "Hello World!" }
+-    assert_raise(NotImplementedError) { inst.render }
+-    assert inst.prepared?
++    assert_raises(NotImplementedError) { inst.render }
++    raise unless inst.prepared?
+   end
+ 
+   class SimpleMockTemplate < PreparingMockTemplate
+-    include Test::Unit::Assertions
++    include Minitest::Assertions
+     def evaluate(scope, locals, &block)
+-      assert prepared?
+-      assert !scope.nil?
+-      assert !locals.nil?
++      raise unless prepared?
++      raise unless !scope.nil?
++      raise unless !locals.nil?
+       "<em>#{@data}</em>"
+     end
+   end
+@@ -125,7 +125,7 @@ class TiltTemplateTest < Test::Unit::TestCase
+   test "prepares and evaluates the template on #render" do
+     inst = SimpleMockTemplate.new { |t| "Hello World!" }
+     assert_equal "<em>Hello World!</em>", inst.render
+-    assert inst.prepared?
++    raise unless inst.prepared?
+   end
+ 
+   class SourceGeneratingMockTemplate < PreparingMockTemplate
+@@ -137,18 +137,18 @@ class TiltTemplateTest < Test::Unit::TestCase
+   test "template_source with locals" do
+     inst = SourceGeneratingMockTemplate.new { |t| 'Hey #{name}!' }
+     assert_equal "Hey Joe!", inst.render(Object.new, :name => 'Joe')
+-    assert inst.prepared?
++    raise unless inst.prepared?
+   end
+ 
+   test "template_source with locals of strings" do
+     inst = SourceGeneratingMockTemplate.new { |t| 'Hey #{name}!' }
+     assert_equal "Hey Joe!", inst.render(Object.new, 'name' => 'Joe')
+-    assert inst.prepared?
++    raise unless inst.prepared?
+   end
+ 
+   test "template_source with locals having non-variable keys raises error" do
+     inst = SourceGeneratingMockTemplate.new { |t| '1 + 2 = #{_answer}' }
+-    err = assert_raise(RuntimeError) { inst.render(Object.new, 'ANSWER' => 3) }
++    err = assert_raises(RuntimeError) { inst.render(Object.new, 'ANSWER' => 3) }
+     assert_equal "invalid locals key: \"ANSWER\" (keys must be variable names)", err.message
+     assert_equal "1 + 2 = 3", inst.render(Object.new, '_answer' => 3)
+   end
+diff --git a/test/tilt_test.rb b/test/tilt_test.rb
+index f12dacb..1cbdf4f 100644
+--- a/test/tilt_test.rb
++++ b/test/tilt_test.rb
+@@ -1,7 +1,7 @@
+ require 'contest'
+ require 'tilt'
+ 
+-class TiltTest < Test::Unit::TestCase
++class TiltTest < Minitest::Test
+   class MockTemplate
+     attr_reader :args, :block
+     def initialize(*args, &block)
+@@ -16,7 +16,7 @@ class TiltTest < Test::Unit::TestCase
+ 
+   test "an extension is registered if explicit handle is found" do
+     Tilt.register('mock', MockTemplate)
+-    assert Tilt.registered?('mock')
++    raise unless Tilt.registered?('mock')
+   end
+ 
+   test "registering template classes by symbol file extension" do
+@@ -52,8 +52,8 @@ class TiltTest < Test::Unit::TestCase
+   end
+ 
+   test "accessing template class mappings at Tilt::mappings" do
+-    assert Tilt.respond_to?(:mappings)
+-    assert Tilt.mappings.respond_to?(:[])
++    raise unless Tilt.respond_to?(:mappings)
++    raise unless Tilt.mappings.respond_to?(:[])
+   end
+ 
+   test "creating new template instance with a filename" do
+diff --git a/test/tilt_wikiclothtemplate_test.rb b/test/tilt_wikiclothtemplate_test.rb
+index fd52de9..0031dde 100644
+--- a/test/tilt_wikiclothtemplate_test.rb
++++ b/test/tilt_wikiclothtemplate_test.rb
+@@ -4,7 +4,7 @@ require 'tilt'
+ begin
+   require 'wikicloth'
+ 
+-  class WikiClothTemplateTest < Test::Unit::TestCase
++  class WikiClothTemplateTest < Minitest::Test
+     test "is registered for '.mediawiki' files" do
+       assert_equal Tilt::WikiClothTemplate, Tilt['test.mediawiki']
+     end
+diff --git a/test/tilt_yajltemplate_test.rb b/test/tilt_yajltemplate_test.rb
+index 48ef1d1..3b4b310 100644
+--- a/test/tilt_yajltemplate_test.rb
++++ b/test/tilt_yajltemplate_test.rb
+@@ -4,7 +4,7 @@ require 'tilt'
+ begin
+   require 'yajl'
+ 
+-  class YajlTemplateTest < Test::Unit::TestCase
++  class YajlTemplateTest < Minitest::Test
+     test "is registered for '.yajl' files" do
+       assert_equal Tilt::YajlTemplate, Tilt['test.yajl']
+     end
+-- 
+1.9.3
+

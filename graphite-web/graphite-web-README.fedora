@@ -1,0 +1,16 @@
+=========== README.fedora ===========
+
+Before starting the web application, you must perform two steps.
+
+(1) Initialize the database:
+
+  # /usr/bin/graphite-manage syncdb --noinput
+
+(2) Build the index:
+
+  # /usr/bin/graphite-build-index
+
+(3) Change ownership:
+
+  # /usr/bin/chown -R apache:apache /var/lib/graphite-web
+

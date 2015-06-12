@@ -1,0 +1,9 @@
+/var/log/graphite-web/*.log {
+    notifempty
+    copytruncate
+    missingok
+    notifempty
+    daily
+    compress
+    delaycompress
+}

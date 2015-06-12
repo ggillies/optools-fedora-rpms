@@ -1,0 +1,35 @@
+diff -up ./fluent-plugin-add.gemspec.bak ./fluent-plugin-add.gemspec
+--- ./fluent-plugin-add.gemspec.bak	2015-02-19 09:55:39.659319167 +1000
++++ ./fluent-plugin-add.gemspec	2015-02-19 09:56:28.687649624 +1000
+@@ -24,13 +24,19 @@ Gem::Specification.new do |s|
+     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+       s.add_development_dependency(%q<bundler>, ["~> 1.3"])
+       s.add_development_dependency(%q<rake>, [">= 0"])
++      s.add_development_dependency(%q<minitest>, [">= 0"])
++      s.add_development_dependency(%q<fluentd>, [">= 0"])
+     else
+       s.add_dependency(%q<bundler>, ["~> 1.3"])
+       s.add_dependency(%q<rake>, [">= 0"])
++      s.add_dependency(%q<minitest>, [">= 0"])
++      s.add_dependency(%q<fluentd>, [">= 0"])
+     end
+   else
+     s.add_dependency(%q<bundler>, ["~> 1.3"])
+     s.add_dependency(%q<rake>, [">= 0"])
++    s.add_dependency(%q<minitest>, [">= 0"])
++    s.add_dependency(%q<fluentd>, [">= 0"])
+   end
+ end
+ 
+diff -up ./test/helper.rb.bak ./test/helper.rb
+--- ./test/helper.rb.bak	2015-02-19 09:56:42.074739854 +1000
++++ ./test/helper.rb	2015-02-19 09:56:46.554770050 +1000
+@@ -11,7 +11,7 @@ require 'test/unit'
+ 
+ $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
+ $LOAD_PATH.unshift(File.dirname(__FILE__))
+-# require 'fluent/test'
++require 'fluent/test'
+ unless ENV.has_key?('VERBOSE')
+   nulllogger = Object.new
+   nulllogger.instance_eval {|obj|

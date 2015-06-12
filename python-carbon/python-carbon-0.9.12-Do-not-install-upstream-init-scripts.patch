@@ -1,0 +1,31 @@
+From 879a480297863ba50ef8909326d586197f08282b Mon Sep 17 00:00:00 2001
+From: Jamie Nguyen <j@jamielinux.com>
+Date: Mon, 24 Nov 2014 19:30:41 +0000
+Subject: [PATCH] Do not install upstream init scripts
+
+---
+ setup.py | 8 --------
+ 1 file changed, 8 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 1f1f4ff..f9b9c35 100644
+--- a/setup.py
++++ b/setup.py
+@@ -19,14 +19,6 @@ conf_files = [ ('conf', glob('conf/*.example')) ]
+ 
+ install_files = storage_dirs + conf_files
+ 
+-# If we are building on RedHat, let's use the redhat init scripts.
+-if platform.dist()[0] == 'redhat':
+-    init_scripts = [ ('/etc/init.d', ['distro/redhat/init.d/carbon-cache',
+-                                      'distro/redhat/init.d/carbon-relay',
+-                                      'distro/redhat/init.d/carbon-aggregator']) ]
+-    install_files += init_scripts
+-
+-
+ setup(
+   name='carbon',
+   version='0.9.12',
+-- 
+2.1.0
+

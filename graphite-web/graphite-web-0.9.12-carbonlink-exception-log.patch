@@ -1,0 +1,18 @@
+Log metric that produced exception.
+
+Merge to upstream 0.9.x branch requested at
+https://github.com/graphite-project/graphite-web/pull/446
+
+diff --git a/webapp/graphite/render/datalib.py b/webapp/graphite/render/datalib.py
+index cbd5f4c..bb60bd2 100644
+--- a/webapp/graphite/render/datalib.py
++++ b/webapp/graphite/render/datalib.py
+@@ -231,7 +231,7 @@ def fetchData(requestContext, pathExpr):
+       cachedResults = CarbonLink.query(dbFile.real_metric)
+       results = mergeResults(dbResults, cachedResults)
+     except:
+-      log.exception()
++      log.exception("Failed CarbonLink query '%s'" % dbFile.real_metric)
+       results = dbResults
+ 
+     if not results:
