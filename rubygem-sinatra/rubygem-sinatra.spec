@@ -5,7 +5,7 @@
 Summary:        Ruby-based web application framework
 Name:           rubygem-%{gem_name}
 Version:        1.4.5
-Release:        2%{?dist}
+Release:        3%{?dist}
 Group:          Development/Languages
 License:        MIT
 URL: http://www.sinatrarb.com/
@@ -25,6 +25,9 @@ BuildArch:      noarch
 Epoch:          1
 %if 0%{?fedora} <= 20 || 0%{?el7}
 Provides: rubygem(%{gem_name}) = %{version}
+Requires:  rubygem(rack) >= 1.4.0
+Requires:  rubygem(rack-protection) >= 1.4.0
+Requires:  rubygem(tilt) >= 1.3.3
 %endif
 
 
@@ -84,6 +87,9 @@ rm %{buildroot}/%gem_instdir/.yardopts # Remove YARD configuration
 %{gem_instdir}/Gemfile
 
 %changelog
+* Fri Jun 19 2015 Graeme Gillies <ggillies@redhat.com> - 1:1.4.5-3
+- Added in explicit runtime dependencies for EL7
+
 * Wed Jun 03 2015 Graeme Gillies <ggillies@redhat.com> - 1:1.4.5-2
 - Added explicit provides for building in EL7
 

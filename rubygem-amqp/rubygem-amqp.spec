@@ -3,7 +3,7 @@
 
 Name: rubygem-%{gem_name}
 Version: 1.5.0
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: Widely used, feature-rich asynchronous RabbitMQ client with batteries included
 Group: Development/Languages
 License: Ruby
@@ -14,6 +14,8 @@ BuildRequires: rubygems-devel
 BuildRequires: ruby 
 # BuildRequires: rubygem(rspec) 
 # BuildRequires: rubygem(bundler) 
+Requires: rubygem(eventmachine)
+Requires: rubygem(amq-protocol)
 BuildArch: noarch
 %if 0%{?fedora} <= 20 || 0%{?el7}
 Provides: rubygem(%{gem_name}) = %{version}
@@ -101,5 +103,8 @@ popd
 %{gem_instdir}/repl
 
 %changelog
+* Thu Jun 18 2015 Graeme Gillies <ggillies@redhat.com> - 1.5.0-2
+- Updated specfile to include missing runtime dependencies
+
 * Tue Jan 27 2015 Graeme Gillies <ggillies@redhat.com> - 1.5.0-1
 - Initial package

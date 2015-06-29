@@ -1,0 +1,11 @@
+[Unit]
+Description=Uchiwa - dashboard for sensu
+After=sensu-api.service
+ 
+[Service]
+ExecStart=/usr/bin/uchiwa -c /etc/uchiwa/uchiwa.json -p /usr/share/uchiwa/public
+User=uchiwa
+Group=uchiwa
+ 
+[Install]
+WantedBy=multi-user.target 

@@ -3,7 +3,7 @@
 
 Name: rubygem-%{gem_name}
 Version: 2.4.0
-Release: 1%{?dist}
+Release: 3%{?dist}
 Summary: The Sensu transport abstraction library
 Group: Development/Languages
 License: MIT
@@ -12,11 +12,14 @@ Source0: https://rubygems.org/gems/%{gem_name}-%{version}.gem
 BuildRequires: ruby(release)
 BuildRequires: rubygems-devel 
 BuildRequires: ruby 
-BuildRequires: rubygem(rspec) 
-BuildRequires: rubygem-eventmachine
-BuildRequires: rubygem-sensu-em
-BuildRequires: rubygem-amqp
+# BuildRequires: rubygem(rspec) 
+# BuildRequires: rubygem(eventmachine)
+Requires: rubygem(sensu-em)
+Requires: rubygem(amqp)
 BuildArch: noarch
+%if 0%{?fedora} <= 20 || 0%{?el7}
+Provides: rubygem(%{gem_name}) = %{version}
+%endif
 
 %description
 The Sensu transport abstraction library.
@@ -77,5 +80,11 @@ popd
 %{gem_instdir}/%{gem_name}.gemspec
 
 %changelog
+* Thu Jun 18 2015 Graeme Gillies <ggillies@redhat.com> - 2.4.0-3
+- Added in missing runtime dependencies on rubygem-sensu-em and rubygem-amqp
+
+* Thu Jun 18 2015 Graeme Gillies <ggillies@redhat.com> - 2.4.0-2
+- Added explicit Provides for EL7
+
 * Fri Jan 23 2015 Graeme Gillies <ggillies@redhat.com> - 2.4.0-1
 - Initial package

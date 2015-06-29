@@ -3,7 +3,7 @@
 
 Name: rubygem-%{gem_name}
 Version: 1.1.0
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: The Sensu spawn process library
 Group: Development/Languages
 License: MIT
@@ -13,10 +13,14 @@ BuildRequires: ruby(release)
 BuildRequires: rubygems-devel 
 BuildRequires: ruby 
 BuildRequires: rubygem(rspec) 
-BuildRequires: rubygem(eventmachine)
 BuildRequires: rubygem(sensu-em)
 BuildRequires: rubygem(em-worker)
 BuildRequires: rubygem(childprocess)
+BuildRequires: rubygem(eventmachine)
+Requires: rubygem(sensu-em)
+Requires: rubygem(em-worker)
+Requires: rubygem(childprocess)
+Requires: rubygem(eventmachine)
 # BuildRequires: rubygem(ffi)
 BuildArch: noarch
 %if 0%{?fedora} <= 20 || 0%{?el7}
@@ -91,5 +95,8 @@ popd
 %{gem_instdir}/spec
 
 %changelog
+* Fri Jun 19 2015 Graeme Gillies <ggillies@redhat.com> - 1.1.0-2
+- Added in missing runtime dependencies
+
 * Tue Jan 27 2015 Graeme Gillies <ggillies@redhat.com> - 1.1.0-1
 - Initial package

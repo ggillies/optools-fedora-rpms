@@ -4,7 +4,7 @@
 
 Name: %{gem_name}
 Version: 0.16.0
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: A monitoring framework
 Group: Development/Languages
 License: MIT
@@ -21,7 +21,7 @@ Requires(pre): shadow-utils
 Requires(post): systemd
 Requires(preun): systemd
 Requires(postun): systemd
-%if 0%{?el} > 0
+%if 0%{?el7} > 0
 Requires: rubygem(async_sinatra) >= 1.0.0
 Requires: rubygem(em-redis-unified) = 0.5.0
 Requires: rubygem(multi_json) = 1.10.1
@@ -35,14 +35,6 @@ Requires: rubygem(sensu-transport) = 2.4.0
 Requires: rubygem(sinatra) >= 1.3.5
 Requires: rubygem(thin) >= 1.5.0
 Requires: rubygem(uuidtools) >= 2.1.4
-Requires: rubygem(amqp)
-Requires: rubygem(amq-protocol)
-Requires: rubygem(eventmachine)
-requires: rubygem(em-worker)
-requires: rubygem(childprocess)
-requires: rubygem(ffi)
-requires: rubygem(daemons)
-requires: rubygem(sinatra)
 %endif
 BuildArch: noarch
 
@@ -147,5 +139,8 @@ exit 0
 %doc %{gem_docdir}
 %{gem_instdir}/%{gem_name}.gemspec
 %changelog
+* Thu Jun 18 2015 Graeme Gillies <ggillies@redhat.com> - 0.16.0-2
+- Corrected spec file macro so explicit dependencies for EL7 are included
+
 * Fri Jan 23 2015 Graeme Gillies <ggillies@redhat.com> - 0.16.0-1
 - Initial package
